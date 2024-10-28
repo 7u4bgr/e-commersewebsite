@@ -1,0 +1,6 @@
+
+/* styles.css */
+.custom-cursor {
+    object-fit: cover;
+    cursor: url('./custom-cursor.svg'), auto; /* src klasöründe olduğu için './' ile başlatabilirsiniz */
+}

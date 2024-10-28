@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.background {
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+.background .header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.background .header button {
+  width: 15px;
+  height: 30px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: #db4444;
+}
+.background .header h2 {
+  font-family: "Poppins", sans-serif;
+  color: #db4444;
+  font-weight: 600;
+}
+.background .flashSales {
+  padding-top: 20px;
+}
+.background .flashSales h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+}
+.background .price {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.background .price .border .images {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(194, 194, 194);
+  border-radius: 5px;
+  padding: 30px;
+  font-family: "Poppins", sans-serif;
+}
+.background .price .border .images:hover {
+  background-color: #db4444;
+}
+.background .price .border .images:hover svg path,
+.background .price .border .images:hover svg line {
+  stroke: white;
+}
+.background .price .border .images:hover h2 {
+  color: white;
+}
+
+.hr hr {
+  padding-top: 0;
+  margin-top: 0;
+}/*# sourceMappingURL=index.module.css.map */

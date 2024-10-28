@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.background {
+  position: fixed;
+  top: 0; 
+  width: 100%;
+  background-color: white; 
+  z-index: 1000;
+  padding: 27px 0;
+  .headerControl {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1440px;
+    margin: auto;
+    .leftSide {
+      h2 {
+        font-family: "Poppins", sans-serif;
+
+        font-size: 24px;
+        font-weight: 700;
+      }
+    }
+    .middleSide {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      li {
+        font-size: 16px;
+        font-family: "Poppins", sans-serif;
+      }
+    }
+    .hamburger {
+      display: none;
+    }
+    .rightSide {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      input {
+        padding: 10px 40px;
+        outline: none;
+        border: none;
+        background-color: #f5f5f5;
+        outline: rgb(43, 147, 196);
+      }
+      input::placeholder {
+        font-family: "Poppins", sans-serif;
+        font-style: 12px;
+      }
+    }
+  }
+  .overlay {
+    display: none;
+  }
+}
+hr {
+  margin-top: 90px;
+}
+@media (max-width: 498px) {
+  .background {
+    padding-top: 10px;
+    .headerControl {
+      width: 90%;
+      margin: auto;
+      .middleSide {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+
+      .rightSide {
+        display: none;
+      }
+    }
+    .overlay {
+      display: flex;
+      width: 90%;
+      margin: auto;
+      gap: 10px;
+      flex-direction: column;
+
+      a {
+        text-decoration: none;
+        color: black;
+        padding-bottom: 25px;
+        padding-top: 25px;
+        font-size: 18px;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+
+        border-bottom: 1px solid gray;
+      }
+      input {
+        font-family: "Poppins", sans-serif;
+        padding: 20px 20px;
+      }
+      input::placeholder {
+        font-family: "Poppins", sans-serif;
+      }
+    }
+  }
+  hr {
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+}

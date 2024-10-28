@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.background {
+  max-width: 1440px;
+  margin: auto;
+}
+
+@media (max-width: 498px) {
+  .background {
+    width: 90%;
+    margin: auto;
+  }
+}/*# sourceMappingURL=index.module.css.map */

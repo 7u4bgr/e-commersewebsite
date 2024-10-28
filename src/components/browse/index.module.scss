@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.background {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    button {
+      width: 15px;
+      height: 30px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      background-color: #db4444;
+    }
+    h2 {
+      font-family: "Poppins", sans-serif;
+      color: #db4444;
+      font-weight: 600;
+    }
+  }
+  .flashSales {
+    padding-top: 20px;
+    h2 {
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+    }
+  }
+  .price {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    .border {
+      .images {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid rgb(194, 194, 194);
+        border-radius: 5px;
+        padding: 30px;
+        font-family: "Poppins", sans-serif;
+      }
+      .images:hover{
+        background-color: #db4444;
+     
+        svg path,
+        svg line {
+          stroke: white;
+        }
+       
+        h2{
+            color: white;
+        }
+      }
+    }
+  }
+}
+.hr{
+  hr{
+    padding-top: 0;
+    margin-top: 0;
+  }
+}

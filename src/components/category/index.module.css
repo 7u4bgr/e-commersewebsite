@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.control {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+.control .categoryControl {
+  display: flex;
+  gap: 100px;
+}
+.control .categoryControl .ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.control .categoryControl .ul li {
+  font-family: "Poppins", sans-serif;
+  font-style: 14px;
+}
+.control .categoryControl hr {
+  margin-top: 0;
+  padding-top: 0;
+  rotate: 0deg;
+}
+.control .categoryMobile {
+  display: none;
+}
+.control .photo img {
+  width: 100%;
+}
+
+.hrEnd hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+@media (max-width: 498px) {
+  .control {
+    display: flex;
+    flex-direction: column;
+  }
+  .control .categoryControl .ul {
+    display: none;
+  }
+  .control .categoryMobile {
+    padding-top: 10px;
+    display: block;
+  }
+  .control .categoryMobile .buttonCategory {
+    background-color: rgb(180, 180, 180);
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    outline: none;
+  }
+  .control .categoryMobile .categoryUl {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .control .categoryMobile .categoryUl button {
+    background-color: #DB4444;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: "Poppins", sans-serif;
+  }
+  .control .categoryMobile .categoryUl .womensDress {
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .control .categoryMobile .categoryUl .womensDress h2 {
+    padding-left: 10px;
+    width: 30%;
+    font-family: "Poppins", sans-serif;
+  }
+  .control .categoryMobile .categoryUl .manDress {
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .control .categoryMobile .categoryUl .manDress h2 {
+    padding-left: 10px;
+    width: 30%;
+    font-family: "Poppins", sans-serif;
+  }
+  .control .categoryMobile .categoryUl .closeWomen {
+    width: 100%;
+    margin-top: 10px;
+    background-color: transparent;
+    border: 1px solid #DB4444;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .control .categoryMobile .categoryUl .closeMan {
+    width: 100%;
+    margin-top: 10px;
+    background-color: transparent;
+    border: 1px solid #DB4444;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+  }
+}/*# sourceMappingURL=index.module.css.map */
