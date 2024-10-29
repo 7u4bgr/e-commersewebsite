@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.background {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    button {
+      width: 15px;
+      height: 30px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      background-color: #db4444;
+    }
+    h2 {
+      font-family: "Poppins", sans-serif;
+      color: #db4444;
+      font-weight: 600;
+    }
+  }
+  .newArrival {
+    padding-top: 20px;
+    h2 {
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+    }
+  }
+  .sideControl {
+    background-color: black;
+    border-radius: 10px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    .leftSide {
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .rightSide {
+      .controlRightSide {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .topRightSide {
+          img {
+            width: 100%;
+          }
+        }
+        .controlLeftAndRightSide {
+          display: flex;
+          justify-content: space-between;
+          .leftLeftSide {
+            img {
+              width: 100%;
+            }
+          }
+          .leftRightSide {
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.hr{
+    hr{
+        margin-top: 50px;
+    }
+}
+@media (max-width: 498px) {
+  .background {
+    .sideControl {
+      display: flex;
+      flex-direction: column;
+      .leftSide {
+        img {
+          width: 100%;
+        }
+      }
+      .rightSide {
+        .controlRightSide {
+          gap: 5px;
+          .topRightSide {
+            img {
+              width: 100%;
+            }
+          }
+          .controlLeftAndRightSide {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            .leftLeftSide {
+              img {
+                width: 100%;
+              }
+            }
+            .leftRightSide {
+              img {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

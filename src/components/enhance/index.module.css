@@ -1,0 +1,124 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.background {
+  background-color: black;
+  width: 100%;
+  margin-top: 50px;
+}
+.background .sideControl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 69px 56px;
+}
+.background .sideControl .leftSide {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.background .sideControl .leftSide .firstLeft h2 {
+  color: #00ff66;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+.background .sideControl .leftSide .twoLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.background .sideControl .leftSide .twoLeft .headersTwo h2 {
+  font-size: 48px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  width: 450px;
+}
+.background .sideControl .leftSide .twoLeft .dateTwo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.background .sideControl .leftSide .twoLeft .dateTwo .daysTwo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  font-family: "Poppins", sans-serif;
+}
+.background .sideControl .leftSide .twoLeft .dateTwo .daysTwo h1 {
+  font-weight: 600;
+}
+.background .sideControl .leftSide .twoLeft .dateTwo .daysTwo h2 {
+  font-size: 14px;
+}
+.background .sideControl .leftSide .threeLeft button {
+  font-family: "Poppins", sans-serif;
+  background-color: #00ff66;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 48px;
+}
+.background .sideControl .rightSide {
+  position: relative;
+}
+.background .sideControl .rightSide::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: gray;
+  filter: blur(50px); /* Sadece arka plana bulanıklık efekti */
+}
+.background .sideControl .rightSide img {
+  width: 100%;
+  position: relative;
+  z-index: 1; /* Görseli üstte tut */
+}
+
+.hr hr {
+  margin-top: 50px;
+}
+
+@media (max-width: 498px) {
+  .background .sideControl {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+  }
+  .background .sideControl .leftSide .firstLeft {
+    width: 100%;
+  }
+  .background .sideControl .leftSide .firstLeft h2 {
+    font-size: 16px;
+  }
+  .background .sideControl .leftSide .twoLeft .headersTwo h2 {
+    width: 100%;
+    font-size: 32px;
+  }
+  .background .sideControl .leftSide .twoLeft .dateTwo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .background .sideControl .leftSide .twoLeft .dateTwo .daysTwo {
+    width: 35%;
+  }
+  .background .sideControl .leftSide .threeLeft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}/*# sourceMappingURL=index.module.css.map */
