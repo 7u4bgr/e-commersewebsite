@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.background .control {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.background form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.background form h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+}
+.background form p {
+  margin-bottom: 20px;
+  font-family: "Poppins", sans-serif;
+}
+.background form input {
+  font-family: "Poppins", sans-serif;
+  padding: 15px 20px;
+  border-radius: 5px;
+  border: 1px solid rgb(192, 192, 192);
+}
+.background form input::-moz-placeholder {
+  font-family: "Poppins", sans-serif;
+}
+.background form input::placeholder {
+  font-family: "Poppins", sans-serif;
+}
+.background form button {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 20px;
+  background-color: #db4444;
+}/*# sourceMappingURL=index.module.css.map */

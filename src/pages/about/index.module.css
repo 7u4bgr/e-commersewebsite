@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.background {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.background .control .header {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.background .control .header h2 {
+  color: rgb(139, 139, 139);
+}
+.background .control .header a {
+  text-decoration: none;
+  color: rgb(139, 139, 139);
+}
+.background .control .header h3 {
+  color: black;
+}
+.background .control .ourStory {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.background .control .ourStory .storyText {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.background .control .ourStory .storyText h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+}
+.background .control .ourStory .storyText p {
+  width: 550px;
+  font-family: "Poppins", sans-serif;
+  line-height: 28px;
+}
+.background .control .borderMaps {
+  padding-top: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.background .control .borderMaps .controlBorderMaps {
+  width: 20%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  gap: 24px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.background .control .borderMaps .controlBorderMaps h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+}
+.background .control .borderMaps .controlBorderMaps h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+}
+.background .control .borderMaps .controlBorderMaps h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+}/*# sourceMappingURL=index.module.css.map */

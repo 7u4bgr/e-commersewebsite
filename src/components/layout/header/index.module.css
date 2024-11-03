@@ -19,7 +19,9 @@
   width: 1440px;
   margin: auto;
 }
-.background .headerControl .leftSide h2 {
+.background .headerControl .leftSide a {
+  text-decoration: none;
+  color: black;
   font-family: "Poppins", sans-serif;
   font-size: 24px;
   font-weight: 700;
@@ -29,9 +31,61 @@
   align-items: center;
   gap: 30px;
 }
+.background .headerControl .middleSide .active {
+  position: relative;
+  display: inline-block;
+}
+.background .headerControl .middleSide .active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+}
 .background .headerControl .middleSide li {
   font-size: 16px;
   font-family: "Poppins", sans-serif;
+}
+.background .headerControl .middleSide a {
+  text-decoration: none;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  color: black;
+}
+.background .headerControl .middleSide .login .userName {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.background .headerControl .middleSide .login .userName h2 {
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+.background .headerControl .middleSide .signUp {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.background .headerControl .middleSide .signUp .active {
+  position: relative;
+  display: inline-block;
+}
+.background .headerControl .middleSide .signUp .active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+}
+.background .headerControl .middleSide .signUp a {
+  text-decoration: none;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  color: black;
 }
 .background .headerControl .hamburger {
   display: none;

@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.background {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: black;
+}
+.background .control {
+  display: flex;
+  justify-content: space-between;
+}
+.background .control .firstList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.background .control .firstList h2 {
+  font-family: "Poppins", sans-serif;
+  color: white;
+  font-size: 24px;
+}
+.background .control .firstList h3 {
+  padding-top: 10px;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+.background .control .firstList h4 {
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+.background .control .firstList .controlInput {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.background .control .firstList .controlInput input {
+  background-color: transparent;
+  border: 1px solid white;
+  outline: none;
+  padding: 12px 16px;
+  font-family: "Poppins", sans-serif;
+  border-radius: 5px;
+}
+.background .control .firstList .controlInput svg {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 498px) {
+  .background {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .background .control {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
+}/*# sourceMappingURL=index.module.css.map */
