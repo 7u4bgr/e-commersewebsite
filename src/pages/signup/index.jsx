@@ -3,6 +3,7 @@ import Wrapper from "../../components/UI/wrapper";
 import styles from "./index.module.css";
 import PhonePhoto from "../../assets/images/phone.png";
 import axios from "axios";
+import { signup } from "../../api";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -14,33 +15,22 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
 
 
-    // Alanların boş olup olmadığını kontrol et
+
     if (!name || !surname || !email || !password || !confirmpassword) {
-      alert("Bu alanı boş bırakmayın");
+      alert("Don`t Empty");
       return;
     }
 
-    // Şifrelerin eşleşip eşleşmediğini kontrol et
+
     if (password !== confirmpassword) {
-      alert("Şifreler eşleşmiyor");
+      alert("Password false");
       return;
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/save", {
-        name,
-        surname,
-        email,
-        password,
-        confirmpassword
-      });
-
-    
+      const response = await signup({name,surname,email,password,confirmpassword})    
       sessionStorage.setItem("name", name);
-      sessionStorage.setItem("surname", surname);
-      sessionStorage.setItem("email", email);
-      sessionStorage.setItem("password", password);
-      sessionStorage.setItem("confirmpassword", confirmpassword);
+
 
       console.log("Qeydiyyatdan keçildi:", response.data);
       window.location.href = "/"; 

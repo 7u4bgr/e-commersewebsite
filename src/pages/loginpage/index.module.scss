@@ -52,4 +52,27 @@
       }
     }
   }
+  @media(max-width:498px){
+    .background{
+      .control{
+        display: flex;
+        flex-direction: column;
+        .images{
+          img{
+            width: 100%;
+          }
+        }
+        form{
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          padding-bottom: 40px;
+          p{
+            text-align: center;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
   

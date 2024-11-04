@@ -42,4 +42,24 @@
   border-radius: 5px;
   padding: 15px 20px;
   background-color: #db4444;
+}
+
+@media (max-width: 498px) {
+  .background .control {
+    display: flex;
+    flex-direction: column;
+  }
+  .background .control .images img {
+    width: 100%;
+  }
+  .background .control form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 40px;
+  }
+  .background .control form p {
+    text-align: center;
+    margin-bottom: 0;
+  }
 }/*# sourceMappingURL=index.module.css.map */

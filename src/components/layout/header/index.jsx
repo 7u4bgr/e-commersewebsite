@@ -4,6 +4,7 @@ import styles from "./index.module.css";
 import { BuyIcon, ExitIcon, FavoriIcon } from "../../../icons";
 import { Sling as Hamburger } from "hamburger-react";
 import { Link } from "react-router-dom";
+import { login } from "../../../api";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,19 +16,17 @@ const Header = () => {
   };
 
   useEffect(() => {
-    // `sessionStorage`'den kullanıcı adını çekiyoruz
-    const loggedInUser = sessionStorage.getItem("name");
+    const loggedInUser = sessionStorage.getItem("name"); // `sessionStorage`'dan kullanıcı adını çekiyoruz
     if (loggedInUser) {
       // loggedInUser'in ilk harfini büyük yap ve geri kalanını küçük yap
       const formattedUser =
-        loggedInUser.charAt(0).toUpperCase() +
-        loggedInUser.slice(1).toLowerCase();
+        loggedInUser.charAt(0).toUpperCase() + loggedInUser.slice(1).toLowerCase();
       setUser(formattedUser); // `user` state'ini güncelle
     }
   }, []);
 
   const handleLogOut = () => {
-    setUser(null); // `user` state'ini temizle
+    setUser(""); // `user` state'ini temizle
     sessionStorage.clear(); // `sessionStorage`'ı temizle
     window.location.href = "/login"; // Login sayfasına yönlendir
   };
@@ -53,12 +52,12 @@ const Header = () => {
             >
               About
             </Link>
-            <li
+            <Link to={"/contact"}
               onClick={() => setActiveLink("contact")}
               className={activeLink === "contact" ? styles.active : ""}
             >
               Contact
-            </li>
+            </Link>
             <div className={styles.login}>
               {user ? (
                 <div className={styles.userName}>
@@ -96,17 +95,20 @@ const Header = () => {
         </div>
         {isMenuOpen && (
           <div className={styles.overlay}>
-            <Link to="/allperfumes" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/" onClick={() => setIsMenuOpen(false)}>
               Home
             </Link>
-            <Link to="/brends" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/about" onClick={() => setIsMenuOpen(false)}>
               About
             </Link>
-            <Link to="/about" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
               Contact
             </Link>
-            <Link to="/magazins" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/login" onClick={() => setIsMenuOpen(false)}>
               Login
+            </Link>
+            <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
+              Signup
             </Link>
             <input placeholder="What are you looking for?" type="text" />
           </div>

@@ -6,7 +6,7 @@
 
 .background {
   padding-top: 80px;
-  padding-bottom: 80px;
+  padding-bottom: 40px;
 }
 .background .control .header {
   font-family: "Poppins", sans-serif;
@@ -79,4 +79,53 @@
 .background .control .borderMaps .controlBorderMaps h2 {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
+}
+.background .control .price {
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+.background .control .price .border {
+  margin-bottom: 50px;
+}
+.background .control .price .border .imagesBorder {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 80%;
+}
+.background .control .price .border .imagesBorder h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+}
+.background .control .price .border .imagesBorder h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+}
+
+@media (max-width: 498px) {
+  .background {
+    padding-top: 40px;
+  }
+  .background .control .ourStory {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .background .control .ourStory .storyText p {
+    width: 100%;
+  }
+  .background .control .ourStory .images img {
+    width: 100%;
+  }
+  .background .control .borderMaps {
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    gap: 20px;
+  }
+  .background .control .borderMaps .controlBorderMaps {
+    width: 100%;
+  }
 }/*# sourceMappingURL=index.module.css.map */

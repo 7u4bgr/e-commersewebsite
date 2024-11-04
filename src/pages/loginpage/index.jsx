@@ -3,7 +3,7 @@ import Wrapper from "../../components/UI/wrapper";
 import { Link } from "react-router-dom";
 import styles from "./index.module.css";
 import PhonePhoto from "../../assets/images/phone.png";
-import axios from "axios";
+import { login } from "../../api"; // login fonksiyonunu import et
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -11,7 +11,7 @@ const LoginPage = () => {
   const [error, setError] = useState("");
 
   const handleLogin = async (e) => {
-   
+    e.preventDefault();
 
     if (!email || !password) {
       setError("Email ve yaxud parol boş ola bilmez");
@@ -19,15 +19,11 @@ const LoginPage = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/loginPage", {
-        email,
-        password,
-      });
-      const { name } = response.data;
-
-      sessionStorage.setItem("name", name);
+      const response = await login({ email, password }); 
+      sessionStorage.setItem("name", response.name); 
       console.log("Successfully logged in:", response.data);
-      window.location.href = "/";
+
+      window.location.href = "/"; 
     } catch (error) {
       console.log(error);
       setError("Email ve yaxud parol sehvdir");
@@ -59,7 +55,7 @@ const LoginPage = () => {
               placeholder="Password"
               required
             />
-            <button onClick={()=>handleLogin()} type="button">Login</button>
+            <button type="submit">Login</button> {/* Burada type="submit" olmalı */}
             <p>Have you not account?</p>
             <Link to={"/signup"}>Sign Up</Link>
           </form>
