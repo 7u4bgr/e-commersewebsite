@@ -9,7 +9,7 @@ import { login } from "../../../api";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState("");
-  const [activeLink, setActiveLink] = useState("home");
+  const [activeLink, setActiveLink] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -58,10 +58,28 @@ const Header = () => {
             >
               Contact
             </Link>
+     
+          </ul>
+          <div className={styles.hamburger}>
+            <Hamburger
+              size={22}
+              distance="lg"
+              toggled={isMenuOpen}
+              toggle={toggleMenu}
+            />
+          </div>
+
+          <div className={styles.rightSide}>
+            <input placeholder="What are you looking for?" type="text" />
+            <Link to={"/favorites"}>
+
+            <FavoriIcon />
+            </Link>
+            <BuyIcon />
             <div className={styles.login}>
               {user ? (
                 <div className={styles.userName}>
-                  <h2>{user}</h2>
+                  <Link to={"/account/edit"}>{user}</Link>
                   <h2 onClick={handleLogOut}>
                     <ExitIcon />
                   </h2>
@@ -77,20 +95,6 @@ const Header = () => {
                 </>
               )}
             </div>
-          </ul>
-          <div className={styles.hamburger}>
-            <Hamburger
-              size={22}
-              distance="lg"
-              toggled={isMenuOpen}
-              toggle={toggleMenu}
-            />
-          </div>
-
-          <div className={styles.rightSide}>
-            <input placeholder="What are you looking for?" type="text" />
-            <FavoriIcon />
-            <BuyIcon />
           </div>
         </div>
         {isMenuOpen && (

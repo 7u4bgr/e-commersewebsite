@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.background {
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+.background .control .header {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.background .control .header h2 {
+  color: rgb(139, 139, 139);
+}
+.background .control .header a {
+  text-decoration: none;
+  color: rgb(139, 139, 139);
+}
+.background .control .header h3 {
+  color: black;
+}
+.background .control .controlSides {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 90px;
+}
+.background .control .controlSides .leftSide {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 30%;
+}
+.background .control .controlSides .leftSide .leftHeaders h2 {
+  font-size: 24px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
+.background .control .controlSides .leftSide .leftUl {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 30px;
+}
+.background .control .controlSides .leftSide .leftUl .blackColor {
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+.background .control .controlSides .leftSide .leftUl .redColor {
+  color: red;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+.background .control .controlSides .inputsControl {
+  width: 65%;
+}
+.background .control .controlSides .inputsControl .headersH2 {
+  padding-top: 35px;
+  color: red;
+  font-size: 24px;
+  font-family: "Poppins", sans-serif;
+}
+.background .control .controlSides .inputsControl .controlPanel {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.background .control .controlSides .inputsControl .controlPanel .topInput {
+  display: flex;
+  justify-content: space-between;
+}
+.background .control .controlSides .inputsControl .controlPanel .topInput .topInputOne {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 40%;
+}
+.background .control .controlSides .inputsControl .controlPanel .topInput .topInputOne h2 {
+  font-family: "Poppins", sans-serif;
+  color: black;
+}
+.background .control .controlSides .inputsControl .controlPanel .topInput .topInputOne input {
+  width: 100%;
+  background-color: rgb(225, 225, 225);
+  border: none;
+  border-radius: 5px;
+  padding: 16px 20px;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+}
+.background .control .controlSides .inputsControl .controlPanel .topInput .topInputOne input::-moz-placeholder {
+  font-family: "Poppins", sans-serif;
+}
+.background .control .controlSides .inputsControl .controlPanel .topInput .topInputOne input::placeholder {
+  font-family: "Poppins", sans-serif;
+}
+.background .control .controlSides .inputsControl .controlPanel .passwordInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.background .control .controlSides .inputsControl .controlPanel .passwordInputs h2 {
+  font-family: "Poppins", sans-serif;
+  color: black;
+}
+.background .control .controlSides .inputsControl .controlPanel .passwordInputs input {
+  width: 100%;
+  background-color: rgb(225, 225, 225);
+  border: none;
+  border-radius: 5px;
+  padding: 16px 20px;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+}
+.background .control .controlSides .inputsControl .controlPanel .passwordInputs input::-moz-placeholder {
+  font-family: "Poppins", sans-serif;
+}
+.background .control .controlSides .inputsControl .controlPanel .passwordInputs input::placeholder {
+  font-family: "Poppins", sans-serif;
+}
+.background .control .controlSides .inputsControl .controlPanel .buttonsControl {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.background .control .controlSides .inputsControl .controlPanel .buttonsControl .cancelButton button {
+  background-color: transparent;
+  font-family: "Poppins", sans-serif;
+  padding: 10px 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.background .control .controlSides .inputsControl .controlPanel .buttonsControl .confirmButton button {
+  background-color: #db4444;
+  font-family: "Poppins", sans-serif;
+  padding: 10px 30px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+@media (max-width: 498px) {
+  .background {
+    padding-top: 40px;
+  }
+  .background .control .controlSides {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .background .control .controlSides .leftSide {
+    width: 100%;
+  }
+  .background .control .controlSides .leftSide .leftUl {
+    padding: 0;
+  }
+  .background .control .controlSides .inputsControl {
+    width: 100%;
+  }
+}/*# sourceMappingURL=index.module.css.map */

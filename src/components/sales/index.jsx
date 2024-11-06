@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./index.module.css";
 import Wrapper from "../UI/wrapper";
 import { Autoplay, Navigation } from "swiper/modules";
@@ -10,13 +10,18 @@ import "swiper/css/scrollbar";
 import { Link } from "react-router-dom";
 import TishPhoto from "../../assets/images/pskonsol.png";
 import { EyeIcon, FavoriIcon } from "../../icons/index";
+import { useFavorites } from "../../favoritescontext";
 const SalesToday = () => {
+  const { addToFavorites } = useFavorites();
+  const [clickedItems, setClickedItems] = useState({});
+  const [removeItems,setRemoveItems]=useState(false)
+  console.log("itemler", addToFavorites);
   const data = useMemo(() => [
     {
       image: `${TishPhoto}`,
-      name: "S-Series Comfort Chair ",
-      price: "$190",
-      normaleprice: "$400",
+      name: "S-Seriasdes Comfort Chair ",
+      price: "$19sad0",
+      normaleprice: "$40asd0",
       salesprice: "-40%",
     },
     {
@@ -55,7 +60,16 @@ const SalesToday = () => {
       salesprice: "-40%",
     },
   ]);
-
+  useEffect(() => {
+    console.log("Clicked Items State:", clickedItems);
+  }, [clickedItems]);
+  const handleFavoriteClick = (item) => {
+    setClickedItems((prev) => ({
+      ...prev,
+      [item.name]: !prev[item.name],
+    }));
+    addToFavorites(item);
+  };
   return (
     <Wrapper>
       <div className={styles.background}>
@@ -93,11 +107,9 @@ const SalesToday = () => {
           <span></span>
         </div>
         <Swiper
-          modules={[Autoplay]}
           className={styles.price}
           spaceBetween={20}
           slidesPerView={4.5}
-          autoplay={{ delay: 2000, disableOnInteraction: false }}
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => console.log("slide change")}
           breakpoints={{
@@ -121,12 +133,18 @@ const SalesToday = () => {
                 <div className={styles.images}>
                   <img src={item.image} alt={item.name} loading="lazy" />
                   <h2 className={styles.salesPosition}>{item.salesprice}</h2>
-                  <div className={styles.favoriIcons}>
+                  <div
+                    onClick={() => handleFavoriteClick(item)}
+                    className={
+                      clickedItems[item.name]
+                        ? styles.favoriIconsActive
+                        : styles.favoriIcons 
+                    }
+                  >
                     <FavoriIcon />
                   </div>
                   <div className={styles.eyeIcons}>
-
-                  <EyeIcon />
+                    <EyeIcon />
                   </div>
                 </div>
                 <div className={styles.itemName}>

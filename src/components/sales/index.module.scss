@@ -89,17 +89,25 @@
           border-radius: 5px;
         }
         .favoriIcons {
+          cursor: pointer;
+        
           svg {
             position: absolute;
-            z-index: 99999999999999999999999999999999999999999999999;
+            z-index: 100;
             top: 6%;
             right: 6%;
             transform: translate(-6%, -6%);
             background-color: white;
             border-radius: 30px;
             padding: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            color: black;
+            fill: black;
           }
         }
+        
+      
+        
         .eyeIcons {
           svg {
             position: absolute;
@@ -111,6 +119,7 @@
             border-radius: 30px;
             padding: 4px;
           }
+        }
         }
       }
       .itemName {

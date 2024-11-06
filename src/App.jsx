@@ -5,10 +5,15 @@ import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/scrolltotop";
+import { FavoritesProvider } from "./favoritescontext";
+import SalesToday from "./components/sales";
+import Favorites from "./pages/favorites";
 
 function App() {
   return (
+    <FavoritesProvider>
     <BrowserRouter>
+
       <ScrollToTop>
         <div className="appContainer">
           <Routes>
@@ -19,6 +24,8 @@ function App() {
                 element={
                   <div className="custom-cursor">
                     <Header />
+                  
+             
                     <item.component />
                     <Footer />
                   </div>
@@ -29,6 +36,8 @@ function App() {
         </div>
       </ScrollToTop>
     </BrowserRouter>
+    </FavoritesProvider>
+
   );
 }
 

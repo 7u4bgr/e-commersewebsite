@@ -88,6 +88,9 @@
   padding: 6px 12px;
   border-radius: 5px;
 }
+.background .price .border .images .favoriIcons {
+  cursor: pointer;
+}
 .background .price .border .images .favoriIcons svg {
   position: absolute;
   z-index: 100000000000000000000000000000000000000000000000;

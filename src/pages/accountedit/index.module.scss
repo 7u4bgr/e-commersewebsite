@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.background {
+  padding-top: 80px;
+  padding-bottom: 40px;
+  .control {
+    .header {
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      h2 {
+        color: rgb(139, 139, 139);
+      }
+      a {
+        text-decoration: none;
+        color: rgb(139, 139, 139);
+      }
+      h3 {
+        color: black;
+      }
+    }
+    .controlSides {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 90px;
+      .leftSide {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 30%;
+        .leftHeaders {
+          h2 {
+            font-size: 24px;
+            font-weight: 600;
+            font-family: "Poppins", sans-serif;
+          }
+        }
+        .leftUl {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          padding-left: 30px;
+          .blackColor {
+            font-family: "Poppins", sans-serif;
+            cursor: pointer;
+          }
+          .redColor {
+            color: red;
+            font-family: "Poppins", sans-serif;
+            cursor: pointer;
+          }
+        }
+      }
+      .inputsControl {
+        width: 65%;
+        .headersH2 {
+          padding-top: 35px;
+          color: red;
+          font-size: 24px;
+          font-family: "Poppins", sans-serif;
+        }
+        .controlPanel {
+          padding-top: 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          .topInput {
+            display: flex;
+            justify-content: space-between;
+
+            .topInputOne {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              width: 40%;
+              h2 {
+                font-family: "Poppins", sans-serif;
+                color: black;
+              }
+              input {
+                width: 100%;
+                background-color: rgb(225, 225, 225);
+                border: none;
+                border-radius: 5px;
+                padding: 16px 20px;
+                outline: none;
+                font-family: "Poppins", sans-serif;
+              }
+              input::placeholder {
+                font-family: "Poppins", sans-serif;
+              }
+            }
+          }
+          .passwordInputs {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            h2 {
+              font-family: "Poppins", sans-serif;
+              color: black;
+            }
+            input {
+              width: 100%;
+              background-color: rgb(225, 225, 225);
+              border: none;
+              border-radius: 5px;
+              padding: 16px 20px;
+              outline: none;
+              font-family: "Poppins", sans-serif;
+            }
+            input::placeholder {
+              font-family: "Poppins", sans-serif;
+            }
+          }
+          .buttonsControl {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            .cancelButton {
+              button {
+                background-color: transparent;
+                font-family: "Poppins", sans-serif;
+                padding: 10px 30px;
+                border: none;
+                outline: none;
+                cursor: pointer;
+              }
+            }
+            .confirmButton {
+              button {
+                background-color: #db4444;
+                font-family: "Poppins", sans-serif;
+                padding: 10px 30px;
+                border: none;
+                color: white;
+                border-radius: 5px;
+                outline: none;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media(max-width:498px){
+    .background{
+        padding-top: 40px;
+        .control{
+
+            .controlSides{
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                .leftSide{
+                    width: 100%;
+                    .leftUl{
+                        padding: 0;
+                    }
+                }
+                .inputsControl{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
