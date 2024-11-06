@@ -1,11 +1,15 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const FavoritesContext = createContext();
 
 export const FavoritesProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState([
-    
-  ]);
+  const [favorites, setFavorites] = useState([]);
+
+  // Component mount olduğunda localStorage'dan verileri çek
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setFavorites(storedFavorites);
+  }, []);
 
   const addToFavorites = (product) => {
     setFavorites((prev) => {
@@ -14,8 +18,10 @@ export const FavoritesProvider = ({ children }) => {
         console.log("Ürün zaten favorilerde:", product);
         return prev;
       }
-      console.log("Yeni ürün favorilere eklendi:", product);
-      return [...prev, product];
+      const updatedFavorites = [...prev, product];
+      // localStorage'a da kaydet
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      return updatedFavorites;
     });
   };
 

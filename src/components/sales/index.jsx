@@ -69,6 +69,7 @@ const SalesToday = () => {
       [item.name]: !prev[item.name],
     }));
     addToFavorites(item);
+    localStorage.setItem("item",item)
   };
   return (
     <Wrapper>
