@@ -1,8 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./index.module.css";
 import Wrapper from "../../components/UI/wrapper";
 import { MessageIcon, MobileIcon } from "../../icons/index";
+import { sendMessage } from "../../api";
+
 const Contact = () => {
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
+  const [gmail, setGmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    if (!firstname || !lastname || !gmail ||!message) {
+      alert("Lütfen tüm alanları doldurun.");
+      return;
+    }
+
+    try {
+      const response = await sendMessage({
+        firstname,
+        lastname,
+        gmail,
+        message,
+      });
+      console.log("Mesaj gonderildi: " + response.data);
+    } catch (err) {
+      alert("Mesaj gonderilmedi problem buradi.");
+    }
+  };
+
   return (
     <Wrapper>
       <div className={styles.background}>
@@ -36,21 +62,40 @@ const Contact = () => {
               </div>
             </div>
             <div className={styles.rightSide}>
-              <div className={styles.controlInput}>
+              <form className={styles.controlInput}>
                 <div className={styles.topInput}>
-                  <input placeholder="Your Name*" type="text" />
-                  <input placeholder="Your Surname*" type="text" />
-                  <input placeholder="Your Email*" type="text" />
+                  <input
+                    onChange={(e)=>setFirstName(e.target.value)}
+                    placeholder="Your Name*"
+                    type="text"
+                  />
+                  <input
+          
+             
+                    onChange={(e)=>setLastName(e.target.value)}
+                    placeholder="Your Surname*"
+                    type="text"
+                  />
+                  <input
+               
+                    onChange={(e)=>setGmail(e.target.value)}
+                    placeholder="Your Email*"
+                    type="email"
+                  />
                 </div>
                 <div className={styles.textArea}>
-                  <textarea name="message" id="message" cols="30" rows="7">
-                    Your Message
-                  </textarea>
+                  <textarea
+           
+                    onChange={(e)=>setMessage(e.target.value)}
+                    cols="30"
+                    rows="7"
+                    placeholder="Your Message"
+                  />
                 </div>
                 <div className={styles.button}>
-                  <button>Send Message</button>
+                  <button onClick={(e)=>handleSubmit()} type="button">Send Message</button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>

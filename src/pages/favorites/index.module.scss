@@ -32,84 +32,100 @@
         font-family: "Poppins", sans-serif;
       }
     }
-    .border {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .price{
 
-      .images {
-        background-color: #f5f5f5;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 35px 40px;
-        border-radius: 5px;
-        img {
-          padding: 14px 9px;
-        }
-        .salesPosition {
-          position: absolute;
-          font-family: "Poppins", sans-serif;
-          z-index: 999999999999999999999999999999999;
-          left: 8%;
-          top: 6%;
-          transform: translate(-8%, -6%);
-          background-color: #db4444;
-          color: white;
-          padding: 6px 12px;
-          border-radius: 5px;
-        }
-        .favoriIcons {
-          cursor: pointer;
-
-          svg {
-            position: absolute;
-            z-index: 100;
-            top: 6%;
-            right: 6%;
-            transform: translate(-6%, -6%);
-            background-color: white;
-            border-radius: 30px;
-            padding: 4px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            color: black;
-            fill: black;
-          }
-        }
-
-        .eyeIcons {
-          svg {
-            position: absolute;
-            z-index: 99999999999999999999999999999999999999999999999;
-            top: 22%;
-            right: 6%;
-            transform: translate(-6%, -22%);
-            background-color: white;
-            border-radius: 30px;
-            padding: 4px;
-          }
-        }
-      }
-      .itemName {
+      .border {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        h2 {
-          font-family: "Poppins", sans-serif;
-        }
-        h3 {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          font-family: "Poppins", sans-serif;
-          color: red;
 
-          h4 {
-            color: gray;
+        .images {
+          background-color: #f5f5f5;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 35px 40px;
+          border-radius: 5px;
+          img {
+            padding: 14px 9px;
+          }
+          .salesPosition {
+            position: absolute;
             font-family: "Poppins", sans-serif;
-            text-decoration: line-through;
+            z-index: 999999999999999999999999999999999;
+            left: 8%;
+            top: 6%;
+            transform: translate(-8%, -6%);
+            background-color: #db4444;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 5px;
+          }
+          .favoriIcons {
+            cursor: pointer;
+  
+            svg {
+              position: absolute;
+              z-index: 100;
+              top: 6%;
+              right: 6%;
+              transform: translate(-6%, -6%);
+              background-color: white;
+              border-radius: 30px;
+              padding: 4px;
+              transition: background-color 0.3s ease, color 0.3s ease;
+              color: black;
+              fill: black;
+            }
+          }
+  
+          .eyeIcons {
+            svg {
+              position: absolute;
+              z-index: 99999999999999999999999999999999999999999999999;
+              top: 22%;
+              right: 6%;
+              transform: translate(-6%, -22%);
+              background-color: white;
+              border-radius: 30px;
+              padding: 4px;
+            }
           }
         }
+        .itemName {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          h2 {
+            font-family: "Poppins", sans-serif;
+          }
+          h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: "Poppins", sans-serif;
+            color: red;
+  
+            h4 {
+              color: gray;
+              font-family: "Poppins", sans-serif;
+              text-decoration: line-through;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media(max-width:498px){
+  .background{
+    padding-top: 40px;
+    .control{
+      .header{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
       }
     }
   }
