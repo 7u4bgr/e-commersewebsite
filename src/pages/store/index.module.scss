@@ -8,32 +8,23 @@
   padding-bottom: 80px;
   .control {
     .header {
+      font-family: "Poppins", sans-serif;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding-bottom: 50px;
+      gap: 20px;
       h2 {
-        font-family: "Poppins", sans-serif;
-        font-size: 24px;
+        color: rgb(139, 139, 139);
       }
       a {
-        background-color: transparent;
-        border: 1px solid black;
-        padding: 12px 26px;
-        font-family: "Poppins", sans-serif;
-        color: black;
-        border-radius: 5px;
         text-decoration: none;
+        color: rgb(139, 139, 139);
       }
-      a:hover {
-        background-color: #db4444;
-        border: 1px solid white;
-        color: white;
-        font-family: "Poppins", sans-serif;
+      h3 {
+        color: black;
       }
     }
-
     .price {
+      padding-top: 80px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 40px;
@@ -97,11 +88,60 @@
             }
           }
         }
+        .itemCount {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 30px;
+          padding-top: 10px;
+          button {
+            font-size: 24px;
+            cursor: pointer;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            font-family: "Poppins", sans-serif;
+          }
+          h1 {
+            font-size: 24px;
+            font-family: "Poppins", sans-serif;
+          }
+        }
+        .subtotal {
+          padding-top: 20px;
+          h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: "Poppins", sans-serif;
+            font-size: 20px;
+          }
+          h1 {
+            font-family: "Poppins", sans-serif;
+            font-size: 20px;
+            color: #db4444;
+          }
+        }
+ 
       }
       p {
         font-family: "Poppins", sans-serif;
         font-size: 20px;
         width: 100%;
+      }
+      .total {
+        h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          font-family: "Poppins", sans-serif;
+          font-size: 20px;
+        h1{
+          font-family: "Poppins", sans-serif;
+          font-size: 20px;
+          color: #db4444;
+        }
+        }
       }
     }
   }
@@ -110,13 +150,8 @@
   .background {
     padding-top: 40px;
     .control {
-      .header {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-      }
       .price {
+        padding-top: 40px;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         flex-direction: column;

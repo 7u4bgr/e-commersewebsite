@@ -12,7 +12,7 @@ import TishPhoto from "../../assets/images/pskonsol.png";
 import { EyeIcon, FavoriIcon } from "../../icons/index";
 import { useFavorites } from "../../favoritescontext";
 const SalesToday = () => {
-  const { addToFavorites } = useFavorites();
+  const { addToFavorites,removeFromFavorites } = useFavorites();
   const [clickedItems, setClickedItems] = useState({});
   const [removeItems,setRemoveItems]=useState(false)
   console.log("itemler", addToFavorites);
@@ -20,42 +20,42 @@ const SalesToday = () => {
     {
       image: `${TishPhoto}`,
       name: "S-Seriasdes Comfort Chair ",
-      price: "$19sad0",
+      price: 198,
       normaleprice: "$40asd0",
       salesprice: "-40%",
     },
     {
       image: `${TishPhoto}`,
       name: "S-Series Com435fort Chair ",
-      price: "$190",
+      price: 190,
       normaleprice: "$400",
       salesprice: "-40%",
     },
     {
       image: `${TishPhoto}`,
       name: "S-Series Comfdggdort Chair ",
-      price: "$190",
+      price:190,
       normaleprice: "$400",
       salesprice: "-40%",
     },
     {
       image: `${TishPhoto}`,
       name: "S-Series Comdscdsfort Chair ",
-      price: "$190",
+      price: 190,
       normaleprice: "$400",
       salesprice: "-40%",
     },
     {
       image: `${TishPhoto}`,
       name: "S-Series Comfbnmbort Chair ",
-      price: "$190",
+      price: 190,
       normaleprice: "$400",
       salesprice: "-40%",
     },
     {
       image: `${TishPhoto}`,
       name: "S-Series Coyumfort Chair ",
-      price: "$190",
+      price: 190,
       normaleprice: "$400",
       salesprice: "-40%",
     },
@@ -68,7 +68,12 @@ const SalesToday = () => {
       ...prev,
       [item.name]: !prev[item.name],
     }));
-    addToFavorites(item);
+    if(clickedItems[item.name]){
+      removeFromFavorites(item.name)
+    }else{
+
+      addToFavorites(item);
+    }
     localStorage.setItem("item",item)
   };
   return (

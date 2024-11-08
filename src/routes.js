@@ -6,6 +6,7 @@ import Home from "./pages/home";
 import LoginPage from "./pages/loginpage";
 import NotFound from "./pages/notFound";
 import SignUp from "./pages/signup";
+import StorePage from "./pages/store";
 const routeItem = (id, title, path, component) => {
   return {
     id,
@@ -23,7 +24,8 @@ const routes = {
   loginPage:routeItem(5,"loginPage","/login",LoginPage),
   signUp:routeItem(6,"signUp","/signup",SignUp),
   favorites:routeItem(7,"favorites","/favorites",Favorites),
-  accountedit:routeItem(8,"accountedit","/account/edit",AccountEdit)
+  accountedit:routeItem(8,"accountedit","/account/edit",AccountEdit),
+  storepage:routeItem(9,"storepage","/buywishlist",StorePage)
 };
 
 const routeArr = Object.values(routes);

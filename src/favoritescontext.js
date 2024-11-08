@@ -24,9 +24,12 @@ export const FavoritesProvider = ({ children }) => {
       return updatedFavorites;
     });
   };
+  const removeFromFavorites=(itemName)=>{
+setFavorites((prevFavorites)=>prevFavorites.filter(item=>item.name !== itemName))
+  }
 
   return (
-    <FavoritesContext.Provider value={{ favorites, addToFavorites }}>
+    <FavoritesContext.Provider value={{ favorites, addToFavorites ,removeFromFavorites}}>
       {children}
     </FavoritesContext.Provider>
   );
