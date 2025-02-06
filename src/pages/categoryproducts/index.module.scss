@@ -1,0 +1,57 @@
+// index.module.scss
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+  
+    ul {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+      list-style: none;
+      padding: 0;
+  
+      li {
+        width: 30%;
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out;
+  
+        &:hover {
+          transform: scale(1.02);
+        }
+  
+        h3 {
+          color: #007bff;
+          font-size: 18px;
+          margin-bottom: 5px;
+        }
+  
+        p {
+          color: #555;
+          font-size: 14px;
+          margin: 5px 0;
+  
+          &:last-child {
+            font-weight: bold;
+            color: #28a745;
+          }
+        }
+      }
+    }
+  }
+  

@@ -12,7 +12,7 @@ import "swiper/css/scrollbar";
 import TomPhoto from "../../assets/images/tomphoto.png";
 import EmmaPhoto from "../../assets/images/emmaphoto.png";
 import WillPhoto from "../../assets/images/willphoto.png";
-import Delivery from '../../components/delivery/index'
+
 const About = () => {
   const [data] = useState([
     {
@@ -151,7 +151,7 @@ const About = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          <Delivery/>
+        
         </div>
       </div>
     </Wrapper>

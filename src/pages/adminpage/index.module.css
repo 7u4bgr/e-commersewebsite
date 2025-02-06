@@ -89,8 +89,6 @@
   flex-direction: column;
   gap: 10px;
   border-radius: 10px;
-  text-decoration: none;
-  color: black;
 }
 .background .controlBorder .border .images {
   display: flex;

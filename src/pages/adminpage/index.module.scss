@@ -1,0 +1,249 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+  .background {
+    padding-top: 50px;
+    padding-bottom: 20px;
+  
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  
+      button {
+        width: 15px;
+        height: 30px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        background-color: #db4444;
+      }
+  
+      h2 {
+        font-family: "Poppins", sans-serif;
+        color: #db4444;
+        font-weight: 600;
+      }
+    }
+  
+    .flashHeader {
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      .flashSales {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        h2 {
+          font-family: "Poppins", sans-serif;
+          font-weight: 600;
+          font-size: 32px;
+        }
+        button {
+        
+          background-color: #db4444;
+          border: none;
+          
+          padding: 5px 14px;
+          border-radius: 10px;
+          a{
+            text-decoration: none;
+          color: white;
+          font-family: "Poppins", sans-serif;
+          font-weight: 600;
+          font-size: 18px;
+          }
+  
+        }
+      }
+  
+      .flashDate {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+  
+        h3 {
+          color: red;
+          font-size: 20px;
+          font-weight: 700;
+        }
+  
+        .flashDays {
+          h1 {
+            font-family: "Poppins", sans-serif;
+            font-size: 12px;
+          }
+  
+          h2 {
+            font-size: 32px;
+            font-weight: 600;
+            font-family: "Poppins", sans-serif;
+          }
+        }
+      }
+    }
+  
+    .controlBorder {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+  
+      .border {
+        background-color: white;
+        border: 1px solid gray;
+        width: 22%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 10px;
+  
+        .images {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 35px 40px;
+          border-radius: 5px;
+  
+          .price {
+            width: 100%;
+  
+            img {
+              width: 100%;
+              padding: 14px 9px;
+            }
+          }
+  
+          .eyeIcons {
+            position: relative;
+            top: -50%;
+            left: 10%;
+            transform: translate(-10%, 50%);
+          }
+        }
+      }
+  
+      .itemName {
+        display: flex;
+        flex-direction: column;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        gap: 5px;
+  
+        h2 {
+          font-family: "Poppins", sans-serif;
+        }
+  
+        h3 {
+          font-size: 10px;
+          color: rgb(93, 93, 247);
+          font-weight: 600;
+          font-family: "Poppins", sans-serif;
+        }
+  
+        button {
+          color: white;
+          text-align: center;
+          font-family: "Poppins", sans-serif;
+          background-color: #db4444;
+          border: none;
+          border-radius: 10px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+        }
+      }
+    }
+  
+    .viewAll {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      button {
+        background-color: #db4444;
+        font-family: "Poppins", sans-serif;
+        padding: 15px 40px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+    }
+  }
+  
+  @media (max-width: 498px) {
+    .background {
+      padding-top: 20px;
+      padding-bottom: 10px;
+  
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+  
+        h2 {
+          font-size: 24px;
+        }
+      }
+  
+      .flashHeader {
+        flex-direction: column;
+        align-items: flex-start;
+  
+        .flashSales {
+          h2 {
+            font-size: 24px;
+          }
+        }
+  
+        .flashDate {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+  
+          h3 {
+            font-size: 16px;
+          }
+  
+          .flashDays {
+            h1 {
+              font-size: 10px;
+            }
+  
+            h2 {
+              font-size: 24px;
+            }
+          }
+        }
+      }
+  
+      .controlBorder {
+        flex-direction: column;
+        gap: 20px;
+  
+        .border {
+          width: 100%;
+          .images{
+  
+            .price{
+              img{
+                width: 80%;
+                height: 20vh;
+              }
+            }
+            .eyeIcons {
+              position: relative;
+              top: 90%;
+              left: 10%;
+              transform: translate(-10%, -90%);
+            }
+          }
+        }
+      }
+    }
+  }

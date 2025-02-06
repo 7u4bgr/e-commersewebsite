@@ -10,24 +10,24 @@ const Contact = () => {
   const [gmail, setGmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = async (e) => {
-    if (!firstname || !lastname || !gmail ||!message) {
-      alert("Lütfen tüm alanları doldurun.");
-      return;
-    }
+  // const handleSubmit = async (e) => {
+  //   if (!firstname || !lastname || !gmail ||!message) {
+  //     alert("Lütfen tüm alanları doldurun.");
+  //     return;
+  //   }
 
-    try {
-      const response = await sendMessage({
-        firstname,
-        lastname,
-        gmail,
-        message,
-      });
-      console.log("Mesaj gonderildi: " + response.data);
-    } catch (err) {
-      alert("Mesaj gonderilmedi problem buradi.");
-    }
-  };
+  //   try {
+  //     const response = await sendMessage({
+  //       firstname,
+  //       lastname,
+  //       gmail,
+  //       message,
+  //     });
+  //     console.log("Mesaj gonderildi: " + response.data);
+  //   } catch (err) {
+  //     alert("Mesaj gonderilmedi problem buradi.");
+  //   }
+  // };
 
   return (
     <Wrapper>
@@ -93,7 +93,7 @@ const Contact = () => {
                   />
                 </div>
                 <div className={styles.button}>
-                  <button onClick={(e)=>handleSubmit()} type="button">Send Message</button>
+                  {/* <button onClick={(e)=>handleSubmit()} type="button">Send Message</button> */}
                 </div>
               </form>
             </div>

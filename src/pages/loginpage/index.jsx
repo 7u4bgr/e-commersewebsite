@@ -1,63 +1,60 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import Wrapper from "../../components/UI/wrapper";
-import { Link } from "react-router-dom";
 import styles from "./index.module.css";
 import PhonePhoto from "../../assets/images/phone.png";
-import { login } from "../../api"; // login fonksiyonunu import et
+import { login } from "../../api";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!email || !password) {
-      setError("Email ve yaxud parol boş ola bilmez");
-      return;
-    }
-
-    try {
-      const response = await login({ email, password }); 
-      sessionStorage.setItem("name", response.name); 
-      console.log("Successfully logged in:", response.data);
-
-      window.location.href = "/"; 
-    } catch (error) {
-      console.log(error);
-      setError("Email ve yaxud parol sehvdir");
-    }
+      const response = await login({username,password});
+      
+      // window.location.href("/"); 
+      console.log("ELCIN "+response)
+     if(response){
+      window.location.href="/";
+      }
+      else{
+        setError("Username or password is wrong");
+      }
+  
   };
-
   return (
     <Wrapper>
       <div className={styles.background}>
         <div className={styles.control}>
           <div className={styles.images}>
-            <img src={PhonePhoto} alt="" />
+            <img src={PhonePhoto} alt="Phone" />
           </div>
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleSubmit}>
             <h2>Log in to Exclusive</h2>
             <p>Enter your details below</p>
-            {error && <p className={styles.errorText}>{error}</p>}
+
             <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              placeholder="Your email"
+              type="text"
+              placeholder="Username"
               required
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="Password"
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit">Login</button> {/* Burada type="submit" olmalı */}
-            <p>Have you not account?</p>
-            <Link to={"/signup"}>Sign Up</Link>
+            <button type="submit">Login</button>
+
+            {error && <p className={styles.error}>{error}</p>}
+
+            <p>Have you not an account?</p>
+            <a href="/signup">Sign Up</a>
           </form>
         </div>
       </div>

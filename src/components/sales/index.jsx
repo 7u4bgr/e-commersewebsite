@@ -1,174 +1,92 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
 import Wrapper from "../UI/wrapper";
-import { Autoplay, Navigation } from "swiper/modules";
+import { getAllTask, postAddFavorites } from "../../api";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+import { EyeIcon } from "../../icons";
 import { Link } from "react-router-dom";
-import TishPhoto from "../../assets/images/pskonsol.png";
-import { EyeIcon, FavoriIcon } from "../../icons/index";
-import { useFavorites } from "../../favoritescontext";
-const SalesToday = () => {
-  const { addToFavorites,removeFromFavorites } = useFavorites();
-  const [clickedItems, setClickedItems] = useState({});
-  const [removeItems,setRemoveItems]=useState(false)
-  console.log("itemler", addToFavorites);
-  const data = useMemo(() => [
-    {
-      image: `${TishPhoto}`,
-      name: "S-Seriasdes Comfort Chair ",
-      price: 198,
-      normaleprice: "$40asd0",
-      salesprice: "-40%",
-    },
-    {
-      image: `${TishPhoto}`,
-      name: "S-Series Com435fort Chair ",
-      price: 190,
-      normaleprice: "$400",
-      salesprice: "-40%",
-    },
-    {
-      image: `${TishPhoto}`,
-      name: "S-Series Comfdggdort Chair ",
-      price:190,
-      normaleprice: "$400",
-      salesprice: "-40%",
-    },
-    {
-      image: `${TishPhoto}`,
-      name: "S-Series Comdscdsfort Chair ",
-      price: 190,
-      normaleprice: "$400",
-      salesprice: "-40%",
-    },
-    {
-      image: `${TishPhoto}`,
-      name: "S-Series Comfbnmbort Chair ",
-      price: 190,
-      normaleprice: "$400",
-      salesprice: "-40%",
-    },
-    {
-      image: `${TishPhoto}`,
-      name: "S-Series Coyumfort Chair ",
-      price: 190,
-      normaleprice: "$400",
-      salesprice: "-40%",
-    },
-  ]);
-  useEffect(() => {
-    console.log("Clicked Items State:", clickedItems);
-  }, [clickedItems]);
-  const handleFavoriteClick = (item) => {
-    setClickedItems((prev) => ({
-      ...prev,
-      [item.name]: !prev[item.name],
-    }));
-    if(clickedItems[item.name]){
-      removeFromFavorites(item.name)
-    }else{
 
-      addToFavorites(item);
+const SalesToday = () => {
+  const [data, setData] = useState([]); 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [userId, setUserId] = useState(1);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getAllTask();
+        console.log("API'den gelen veri:", response); 
+        
+        if (typeof response === "object" && !Array.isArray(response)) {
+          setData(response.data || []); 
+        } else {
+          setData(Array.isArray(response) ? response : []);
+        }
+      } catch (err) {
+        console.error("API isteği başarısız:", err);
+        setError("Veriler yüklenirken hata oluştu.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleAddFavorites = async (item) => {
+    if (!userId) {
+      alert("Favorilere eklemek için giriş yapmalısınız!");
+      return;
     }
-    localStorage.setItem("item",item)
+
+    try {
+      await postAddFavorites(userId, item.id);
+      alert("Ürün favorilere eklendi!");
+    } catch (error) {
+      console.error("Favorilere eklenirken hata oluştu:", error);
+      alert("Favorilere eklenirken bir hata oluştu.");
+    }
   };
+
+  if (loading) return <div className={styles.loader}>Veriler yükleniyor...</div>;
+  if (error) return <div className={styles.error}>{error}</div>;
+
   return (
     <Wrapper>
       <div className={styles.background}>
         <div className={styles.header}>
-          <button></button>
-          <h2>Today`s Sales</h2>
+          <h2>Bugünün Satışları</h2>
+          <button>
+            <Link to="/createpost" className={styles.createPostButton}>Yeni Gönderi Oluştur</Link>
+          </button>
         </div>
         <div className={styles.flashHeader}>
           <div className={styles.flashSales}>
-            <h2>Flash Sales</h2>
+            <h2>Flash Satışlar</h2>
           </div>
-          <div className={styles.flashDate}>
-            <div className={styles.flashDays}>
-              <h1>Days</h1>
-              <h2>03</h2>
-            </div>
-            <h3>:</h3>
-            <div className={styles.flashDays}>
-              <h1>Hours</h1>
-              <h2>23</h2>
-            </div>
-            <h3>:</h3>
-            <div className={styles.flashDays}>
-              <h1>Minutes</h1>
-              <h2>19</h2>
-            </div>
-            <h3>:</h3>
-            <div className={styles.flashDays}>
-              <h1>Seconds</h1>
-              <h2>56</h2>
-            </div>
-          </div>
-          <span></span>
-          <span></span>
-          <span></span>
         </div>
-        <Swiper
-          className={styles.price}
-          spaceBetween={20}
-          slidesPerView={4.5}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
-          breakpoints={{
-            0: {
-              spaceBetween: 10,
-              slidesPerView: 1.3,
-            },
-            768: {
-              spaceBetween: 15,
-              slidesPerView: 2.5,
-            },
-            992: {
-              spaceBetween: 20,
-              slidesPerView: 4.5,
-            },
-          }}
-        >
-          {data.map((item, index) => (
-            <SwiperSlide key={index}>
-              <div className={styles.border}>
-                <div className={styles.images}>
-                  <img src={item.image} alt={item.name} loading="lazy" />
-                  <h2 className={styles.salesPosition}>{item.salesprice}</h2>
-                  <div
-                    onClick={() => handleFavoriteClick(item)}
-                    className={
-                      clickedItems[item.name]
-                        ? styles.favoriIconsActive
-                        : styles.favoriIcons 
-                    }
-                  >
-                    <FavoriIcon />
-                  </div>
-                  <div className={styles.eyeIcons}>
-                    <EyeIcon />
-                  </div>
-                </div>
-                <div className={styles.itemName}>
-                  <h2>{item.name}</h2>
-                  <h3>
-                    {item.price} <h4>{item.normaleprice}</h4>
-                  </h3>
-                </div>
+        <div className={styles.controlBorder}>
+          {(data || []).map((item) => (
+            <div key={item.id} className={styles.border}>
+              <div className={styles.images}>
+                <Swiper spaceBetween={20} slidesPerView={1} autoplay={{ delay: 2000 }}>
+                  <SwiperSlide>
+                    <img src={item.photoPath} alt={item.title} loading="lazy" />
+                  </SwiperSlide>
+                </Swiper>
+                <Link to={`/product-details/${item.id}`} className={styles.eyeIcons}><EyeIcon /></Link>
               </div>
-            </SwiperSlide>
+              <div className={styles.itemName}>
+                <h2>{item.title}</h2>
+                <p>{item.categoryName}</p>
+                <p>{item.description}</p>
+                <button>{item.price}$</button>
+                <button onClick={() => handleAddFavorites(item)}>Favorilere Ekle</button>
+              </div>
+            </div>
           ))}
-        </Swiper>
-        <div className={styles.viewAll}>
-          <button>View All Products</button>
         </div>
-      </div>
-      <div className={styles.hr}>
-        <hr />
       </div>
     </Wrapper>
   );

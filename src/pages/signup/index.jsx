@@ -2,36 +2,50 @@ import React, { useState } from "react";
 import Wrapper from "../../components/UI/wrapper";
 import styles from "./index.module.css";
 import PhonePhoto from "../../assets/images/phone.png";
-import axios from "axios";
-import { signup } from "../../api";
+import { signUpApi } from "../../api";
 
 const SignUp = () => {
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
+  const [organizationName, setOrganizationName] = useState("");
+  const [phonenumber, setPhoneNumber] = useState("");
+  const [adress, setAdress] = useState("");
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmpassword, setConfirmpassword] = useState("");
+  const [profileImage, setProfileImage] = useState(null);
+
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfileImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
 
-
-
-    if (!name || !surname || !email || !password || !confirmpassword) {
-      alert("Don`t Empty");
-      return;
-    }
-
-
-    if (password !== confirmpassword) {
-      alert("Password false");
+    if (!organizationName || !phonenumber || !adress || !username || !email || !password || !profileImage) {
+      alert("Lütfen tüm alanları doldurun.");
       return;
     }
 
     try {
-      const response = await signup({name,surname,email,password,confirmpassword})    
-      sessionStorage.setItem("name", name);
+      const response = await signUpApi({ 
+        organizationName,
+        phonenumber,
+        adress,
+        username,
+        email,
+        password,
+        profileImage
+      });
 
-
+      sessionStorage.setItem("username", username);
+      sessionStorage.setItem("profileImage", profileImage);
       console.log("Qeydiyyatdan keçildi:", response.data);
       window.location.href = "/"; 
     } catch (error) {
@@ -47,40 +61,68 @@ const SignUp = () => {
           <div className={styles.images}>
             <img src={PhonePhoto} alt="" />
           </div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <h2>Create an account</h2>
             <p>Enter your details below</p>
             <input
               type="text"
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Name"
+              value={organizationName}
+              onChange={(e) => setOrganizationName(e.target.value)}
+              placeholder="Sirket"
               required
             />
             <input
               type="text"
-              onChange={(e) => setSurname(e.target.value)}
-              placeholder="Surname"
+              value={username}
+              onChange={(e) => setUserName(e.target.value)}
+              placeholder="Username"
               required
             />
             <input
               type="email"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="12345678@gmail.com"
               required
             />
             <input
               type="password"
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               required
             />
             <input
-              type="password"
-              onChange={(e) => setConfirmpassword(e.target.value)}
-              placeholder="Confirm password"
+              type="text"
+              value={phonenumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              placeholder="Phone Number"
               required
             />
-            <button onClick={()=>handleSubmit()} type="button">Sign Up</button>
+            <input
+              type="text"
+              value={adress}
+              onChange={(e) => setAdress(e.target.value)}
+              placeholder="Adress"
+              required
+            />
+         
+            <input 
+              type="file" 
+              accept="image/*" 
+              onChange={handleImageChange} 
+              required 
+            />
+          
+            {profileImage && (
+              <img 
+                src={profileImage} 
+                alt="Profile Preview" 
+                style={{ width: "100px", height: "100px", marginTop: "10px" }} 
+              />
+            )}
+
+            <button type="submit">Sign Up</button>
           </form>
         </div>
       </div>

@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .background {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  
+    .controlInputs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px;
+  
+      .inputEdit {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+  
+        label {
+          font-size: 32px;
+          font-weight: 600;
+          color: #db4444;
+        }
+  
+        input {
+          padding: 12px 20px;
+          outline: #db4444;
+          border-radius: 10px;
+        }
+        input::placeholder {
+            font-family: "Poppins", sans-serif;
+          
+          }
+  
+        .chooseInput {
+          background-color: #db4444; /* Butonun arka plan rengini değiştirin */
+          color: white; /* Butonun metin rengini değiştirin */
+          padding: 12px 20px;
+          border: none;
+          border-radius: 10px;
+          cursor: pointer;
+          font-family: "Poppins", sans-serif;
+        }
+        button{
+            background-color: black;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-family: "Poppins", sans-serif;
+            cursor: pointer;
+        }
+      }
+    }
+  }

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./index.module.css";
 import Wrapper from "../UI/wrapper";
 import { Autoplay, Navigation } from "swiper/modules";
@@ -7,61 +7,50 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { getAllCategories } from "../../api";
+import { Link } from "react-router-dom";
 
-import TishPhoto from "../../assets/images/tish.png";
-import {
-  CameraIcon,
-  GamingIcon,
-  HPIcon,
-  PCIcon,
-  PhoneIcon,
-  WatchIcon,
-} from "../../icons";
 const BrowseCategory = () => {
-  const data = useMemo(() => [
-    {
-      svg: <PhoneIcon />,
-      name: "Phone",
-    },
-    {
-      svg: <PCIcon />,
-      name: "Computers",
-    },
-    {
-      svg: <WatchIcon />,
-      name: "SmartWatch",
-    },
-    {
-      svg: <HPIcon />,
-      name: "Camera",
-    },
-    {
-      svg: <HPIcon />,
-      name: "HeadPhones",
-    },
-    {
-      svg: <GamingIcon />,
-      name: "Gaming",
-    },
-  ]);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getAllCategories();
+        setData(Array.isArray(response) ? response : []);
+      } catch (err) {
+        setError("Veriler yüklenirken hata oluştu.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) return <div>Yükleniyor...</div>;
+  if (error) return <div>{error}</div>;
+  if (data.length === 0) return <div>Görüntülenecek kategori bulunamadı.</div>;
+
   return (
     <Wrapper>
       <div className={styles.background}>
         <div className={styles.header}>
           <button></button>
-          <h2>Categories</h2>
+          <h2>Kategoriler</h2>
         </div>
         <div className={styles.flashSales}>
-          <h2>Browse By Category</h2>
+          <h2>Kategoriye Göz At</h2>
         </div>
         <Swiper
-          modules={[Autoplay]}
+          modules={[Autoplay, Navigation]}
           className={styles.price}
           spaceBetween={20}
           slidesPerView={6}
           autoplay={{ delay: 2000, disableOnInteraction: false }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
+          navigation
           breakpoints={{
             0: {
               spaceBetween: 10,
@@ -79,12 +68,11 @@ const BrowseCategory = () => {
         >
           {data.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className={styles.border}>
+              <Link to={`/category-details/${item.categoryName}`} className={styles.border}>
                 <div className={styles.images}>
-                  <h1>{item.svg}</h1>
-                  <h2>{item.name}</h2>
+                  <h1>{item.categoryName}</h1>
                 </div>
-              </div>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

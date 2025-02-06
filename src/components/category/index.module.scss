@@ -2,10 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: black;
 }
 .control {
   display: flex;
-  justify-content: space-between;
+
   padding-top: 20px;
   .categoryControl {
     display: flex;
