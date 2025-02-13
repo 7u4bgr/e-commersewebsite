@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getTaskBySubCategoryName } from "../../api"; 
 import styles from "./index.module.css";
 
@@ -39,11 +39,11 @@ const SubCategoryProducts = () => {
       <h2>Kategoriye Ait Görevler</h2>
       <ul>
         {tasks.map((item) => (
-          <li key={item.id}>
+          <Link to={`/product-details/${item.id}`} key={item.id}>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
             <p>Fiyat: {item.price} TL</p>
-          </li>
+          </Link>
         ))}
       </ul>
     </div>

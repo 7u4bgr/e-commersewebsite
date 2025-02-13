@@ -1,5 +1,6 @@
 import axios from "axios";
 import axiosInstance from "../axiosInstance";
+import { jwtDecode } from "jwt-decode";
 const API_URL = "http://localhost:8081";
 
 //login ucun
@@ -11,7 +12,7 @@ export const login = async (credentials) => {
         'Content-Type': 'application/json',
       },
     });
-    const token = response.data; 
+    const token = response.data;
     console.log("Token alındı:", token);
     localStorage.setItem('token', token);
     return token;
@@ -29,43 +30,76 @@ export const getUserInfo = async (token) => {
       },
     });
     console.log("User info fetch response:", response.data);
-    return response.data; 
+    return response.data;
   } catch (error) {
     console.error("User info fetch error", error);
     return null;
   }
 };
 
-//qeydiyyat ucun
 export const signUpApi = async (credentials) => {
   try {
-    const response = await axios.post(`${API_URL}/api/auth/signup`, credentials, {
+    const formData = new FormData();
+
+    // JSON verilerini ekleyelim
+    formData.append("organizationName", credentials.organizationName);
+    formData.append("phonenumber", credentials.phonenumber);
+    formData.append("adress", credentials.adress);
+    formData.append("username", credentials.username);
+    formData.append("email", credentials.email);
+    formData.append("password", credentials.password);
+
+    // Burada profileImage bir File nesnesi olmalı!
+    if (credentials.profileImage) {
+      formData.append("profileImage", credentials.profileImage);
+    } else {
+      console.log("Profile Image is NULL!");
+    }
+
+    console.log("Gönderilen FormData:");
+    for (let pair of formData.entries()) {
+      console.log(pair[0], pair[1]); // Form verilerini konsola yazdır
+    }
+
+    const response = await axios.post(`${API_URL}/api/auth/signup`, formData, {
       withCredentials: true,
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "multipart/form-data",
+      },
     });
+
     return response.data;
   } catch (error) {
+    console.error("API Hatası:", error);
     return { error: "Qeydiyyatdan kecmedi" };
   }
-}
+};
 
-//task yaratmaq ucun
-export const createTask = async (taskData,userId) => {
+
+
+
+
+export const createTask = async (taskData) => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    alert("Token bulunamadı! Lütfen tekrar giriş yapın.");
+    return { error: true };
+  }
+
   try {
-    const response = await axios.post(`${API_URL}/api/tasks/createTask/${userId}`, taskData, {
-      withCredentials: true,
+    const response = await axios.post(`${API_URL}/api/tasks/createTask`, taskData, {
       headers: {
-        'Content-Type': 'application/json', 
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
     });
     return response.data;
   } catch (error) {
-    console.error('Görev oluşturulurken hata:', error);
-    return { error: 'Görev oluşturulamadı' };
+    console.error("Görev oluşturulurken hata:", error);
+    return { error: true };
   }
 };
+
 
 
 export const getAllTask = async () => {
@@ -75,7 +109,7 @@ export const getAllTask = async () => {
       withCredentials: true,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}` 
+        'Authorization': `Bearer ${token}`
       }
     });
     console.log("API Response:", response.data);
@@ -155,26 +189,32 @@ export const getCategoryForSubCategory = async (id) => {
 };
 
 
-export const postAddFavorites = async (userId, taskId) => {
+
+
+export const addTaskToFavorites = async (userId, taskId) => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    console.error("Token bulunamadı, kullanıcı giriş yapmamış.");
+    return;
+  }
+
   try {
-    if (!taskId || !userId) {
-      throw new Error("taskId veya userId eksik");
-    }
-
-    const response = await axios.post(`${API_URL}/add/add/${userId}/${taskId}`, {}, {
-      withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
+    const response = await axios.post(
+      `${API_URL}/add/users/${userId}/favorites/${taskId}`,
+      {}, // Burada herhangi bir ek veri göndermiyorsanız boş bırakabilirsiniz
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log("Favorilere eklendi:", response.data);
     return response.data;
   } catch (error) {
-    console.error('Favorilere eklenemedi:', error);
+    console.error("Favorilere eklenirken hata oluştu:", error);
     throw new Error("Favorilere eklenemedi.");
   }
 };
-
 
 
 
@@ -195,13 +235,21 @@ export const getAllFavorites = async () => {
   }
 };
 export const getUserFavorites = async (userId) => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    console.error("Token bulunamadı, kullanıcı giriş yapmamış.");
+    return;
+  }
   try {
-    const response = await axios.get(`${API_URL}/add/favorite/${userId}`, {
-      withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    });
+    const response = await axios.get(
+      `${API_URL}/add/favorite/${userId}`,
+      {
+
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     return response.data;
   } catch (error) {
     console.error('Favoriler alınamadı:', error);
@@ -251,11 +299,11 @@ export const getTaskByCategory = async (categoryName) => {
         'Content-Type': 'application/json'
       }
     });
-    console.log("API Response:", response.data); 
+    console.log("Butun Postlar", response.data);
     return response.data;
   } catch (error) {
     console.error("API Error:", error);
-    return { error: "Görevler yüklenirken hata oluştu." };
+    return { error: "Kategoriyanin masinlari gelmedi" };
   }
 };
 export const getTaskBySubCategoryName = async (subCategoryName) => {
@@ -268,7 +316,7 @@ export const getTaskBySubCategoryName = async (subCategoryName) => {
       }
     });
     console.log("API Response:", response.data);
-    return response.data; 
+    return response.data;
   } catch (error) {
     console.error("API Error:", error.response || error.message);
     return { error: "Görevler yüklenirken hata oluştu." };
@@ -291,5 +339,18 @@ export const getTaskById = async (taskId) => {
     return { error: "Task gösterilemedi" };
   }
 };
-
+export const getSearchTask = async (taskName) => {
+  try {
+    const response = await axios.get(`${API_URL}/api/tasks/search/${taskName}`, {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Task çekilemedi:", error);
+    return { error: "Task gösterilemedi" };
+  }
+}
 

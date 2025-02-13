@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Wrapper from "../../components/UI/wrapper/index";
 import styles from "./index.module.css";
-import { createTask, getAllCategories, getAllSubCategory } from "../../api";
+import { createTask, getAllCategories, getAllSubCategory, getUserInfo } from "../../api";
 
 const FileUpload = () => {
   const [title, setTitle] = useState("");
@@ -13,28 +13,41 @@ const FileUpload = () => {
   const [selectedSubCategoryId, setSelectedSubCategoryId] = useState("");
 
   const handleFileUpload = async () => {
- 
     if (!title || !description || !price || !selectedCategoryId) {
       alert("Lütfen tüm alanları doldurun!");
       return;
     }
-
-    const taskData = {
-      title,
-      description,
-      price,
-      categoryId: selectedCategoryId,
-      subCategoryId: selectedSubCategoryId || null,
-    };
-
+  
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Token bulunamadı! Lütfen tekrar giriş yapın.");
+      return;
+    }
+  
     try {
-      const userId=1
-      const result = await createTask(taskData,userId);
+      const userInfo = await getUserInfo(token);
+      if (!userInfo || !userInfo.id) {
+        alert("Kullanıcı bilgileri alınamadı!");
+        return;
+      }
+  
+      console.log("Doğru User ID:", userInfo.id);
+  
+      const taskData = {
+        title,
+        description,
+        price,
+        categoryName: categories.find(c => c.id === selectedCategoryId)?.categoryName || "",
+        subCategoryName: subCategories.find(sc => sc.id === selectedSubCategoryId)?.subCategoryName || "",
+        userId: userInfo.id,
+      };
+      
+  
+      const result = await createTask(taskData);
       if (result?.error) {
-        alert("Dosya yüklenirken bir hata oluştu.");
+        alert("Görev oluşturulurken bir hata oluştu.");
       } else {
-        alert("Dosya başarıyla yüklendi.");
-        // Form alanlarını sıfırla
+        alert("Görev başarıyla oluşturuldu.");
         setTitle("");
         setDescription("");
         setPrice("");
@@ -46,6 +59,9 @@ const FileUpload = () => {
       alert("Görev yüklenirken bir hata oluştu.");
     }
   };
+  
+  
+  
 
   useEffect(() => {
     const fetchCategories = async () => {

@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
 import Wrapper from "../../components/UI/wrapper";
-import { deleteFavoriteId, getUserFavorites } from "../../api"; // getAllFavorites yerine getUserFavorites kullan
+import { getUserFavorites } from "../../api"; // getUserFavorites kullanın
 
 const Favorites = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Kullanıcı ID'sini al
   const userId = localStorage.getItem("userId");
-
 
   useEffect(() => {
     const fetchFavorites = async () => {
@@ -23,13 +21,14 @@ const Favorites = () => {
       try {
         const response = await getUserFavorites(userId);
         console.log("Favoriler API Cevabı:", response);
-
+        
+   
         if (Array.isArray(response)) {
-          setData(response); // Eğer doğrudan bir array ise
+          setData(response);
         } else if (response && Array.isArray(response.data)) {
-          setData(response.data); // Eğer API `data` içinde favori listesini gönderiyorsa
+          setData(response.data); 
         } else {
-          setData([]); // Hatalı veri formatıysa boş dizi ata
+          setData([]); // Boş veri dönmesi durumunda
         }
       } catch (err) {
         setError("Favoriler alınırken hata oluştu.");
@@ -40,15 +39,6 @@ const Favorites = () => {
 
     fetchFavorites();
   }, [userId]);
-
-  const fetchDeleteFavorites = async (id) => {
-    try {
-      await deleteFavoriteId(id);
-      setData((prevData) => prevData.filter((item) => item.id !== id));
-    } catch (err) {
-      setError("Favori silinirken hata oluştu.");
-    }
-  };
 
   if (loading) return <div>Yükleniyor...</div>;
   if (error) return <div>{error}</div>;
@@ -67,9 +57,6 @@ const Favorites = () => {
                 <p>{item.description}</p>
                 <p>{item.price}$</p>
                 <img src={item.photoPath} alt={item.title} />
-                <button onClick={() => fetchDeleteFavorites(favorite.id)}>
-                  Favoriyi Sil
-                </button>
               </div>
             ))}
           </div>
@@ -78,5 +65,6 @@ const Favorites = () => {
     </Wrapper>
   );
 };
+
 
 export default Favorites;

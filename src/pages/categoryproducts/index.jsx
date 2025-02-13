@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getTaskByCategory } from "../../api";  // API fonksiyonunu import et
 import styles from "./index.module.css";
-
+import { getTaskByCategory } from "../../api";
+import {Link} from "react-router-dom";
 const CategoryProducts = () => {
-  const { categoryName } = useParams();  // Kategori ismini params'tan al
+  const { categoryName } = useParams(); 
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,7 +12,6 @@ const CategoryProducts = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        console.log("Fetching tasks for category name:", categoryName); 
         const response = await getTaskByCategory(categoryName); 
         console.log("API Response:", response);
         if (response && Array.isArray(response)) {
@@ -39,11 +38,11 @@ const CategoryProducts = () => {
       <h2>Kategoriye Ait Görevler</h2>
       <ul>
         {tasks.map((item) => (
-          <li key={item.id}>
+          <Link to={`/product-details/${item.id}`} key={item.id}>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
             <p>Fiyat: {item.price} TL</p>
-          </li>
+          </Link>
         ))}
       </ul>
     </div>

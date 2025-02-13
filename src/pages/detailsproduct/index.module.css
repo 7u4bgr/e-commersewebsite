@@ -1,80 +1,84 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .detailsContainer {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 40px auto;
   padding: 20px;
-  background-color: #fff;
+  background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-family: "Arial", sans-serif;
-}
-
-.detailsContainer h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 20px;
   text-align: center;
 }
-
-.detailsContainer img {
-  max-width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+.detailsContainer h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
 }
-
 .detailsContainer p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #555;
-  margin-bottom: 15px;
-  line-height: 1.6;
+  margin: 5px 0;
+}
+.detailsContainer p:nth-child(3) {
+  font-weight: bold;
+  color: #007bff;
 }
 
-.detailsContainer .category {
-  font-weight: 600;
-  color: #666;
-}
-
-.detailsContainer .price {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #e64a19;
-  margin-top: 20px;
-}
-
-.detailsContainer .description {
-  font-style: italic;
-  color: #777;
+h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #444;
+  margin-top: 30px;
 }
 
 ul {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 50px;
-}
-ul li {
-  padding-top: 20px;
-  width: 30%;
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
 }
 
-@media (max-width: 768px) {
-  .detailsContainer {
-    padding: 15px;
-  }
-  .detailsContainer h1 {
-    font-size: 2rem;
-  }
-  .detailsContainer p {
-    font-size: 1rem;
-  }
-  .detailsContainer .price {
-    font-size: 1.3rem;
-  }
+li {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+li h3 {
+  font-size: 1.4rem;
+  color: #222;
+}
+li p {
+  font-size: 1rem;
+  color: #666;
+  margin: 5px 0;
+}
+li:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.eyeIcons {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+.eyeIcons:hover {
+  background: #0056b3;
+}
+
+.loader,
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #d9534f;
+  margin-top: 20px;
 }/*# sourceMappingURL=index.module.css.map */

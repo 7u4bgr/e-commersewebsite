@@ -6,13 +6,12 @@ import { getTaskById, getTaskBySubCategoryName } from "../../api";
 const DetailsProduct = () => {
   const { taskId } = useParams();
   const { subCategoryName } = useParams();
-
   const [data, setData] = useState(null);
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState({ product: true, tasks: false });
   const [error, setError] = useState(null);
 
-  // Ürün detaylarını almak
+
   useEffect(() => {
     console.log("Gelen Task ID:", taskId);
 
@@ -28,7 +27,6 @@ const DetailsProduct = () => {
           throw new Error("Ürün bulunamadı.");
         }
         setData(response);
-        // Ürün yüklendikten sonra alt kategoriye ait ürünleri fetch et
         fetchSubCategoryProducts(response.subCategoryName);
       })
       .catch((error) => {
