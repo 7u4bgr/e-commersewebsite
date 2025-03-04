@@ -21,7 +21,7 @@ export const login = async (credentials) => {
     return false;
   }
 };
-//user details getirmek ucun
+
 export const getUserInfo = async (token) => {
   try {
     const response = await axios.get(`${API_URL}/user/me`, {
@@ -75,10 +75,6 @@ export const signUpApi = async (credentials) => {
   }
 };
 
-
-
-
-
 export const createTask = async (taskData) => {
   const token = localStorage.getItem("token");
   if (!token) {
@@ -101,7 +97,6 @@ export const createTask = async (taskData) => {
 };
 
 
-
 export const getAllTask = async () => {
   try {
     const token = localStorage.getItem("token");
@@ -120,8 +115,6 @@ export const getAllTask = async () => {
   }
 };
 
-
-
 export const removeIdTask = async (taskId) => {
   try {
     const response = await axios.delete(`${API_URL}/api/tasks/remove/${taskId}`, {
@@ -138,21 +131,18 @@ export const removeIdTask = async (taskId) => {
 
 export const getAllCategories = async () => {
   try {
-    const response = await axiosInstance.get('/all/category/get/all/category');
+    const response = await axios.get(`${API_URL}/all/category/get/all/category`);
     return response.data;
   } catch (error) {
-    return { error: "Kateqoriyalar gosterilmedi" };
+    return { error: "Kategoriler gösterilemedi" };
   }
 };
 export const getAllSubCategory = async (categoryId) => {
   try {
     const response = await axios.get(`${API_URL}/all/subCategories/${categoryId}`, {
       withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      headers: { 'Content-Type': 'application/json' }
     });
-    console.log("API Response:", response.data);
     return response.data;
   } catch (error) {
     console.error("API Error:", error);
@@ -160,26 +150,23 @@ export const getAllSubCategory = async (categoryId) => {
   }
 };
 
+
 export const getCategoryForAll = async (id) => {
   try {
     const response = await axios.get(`${API_URL}/all/${id}/details`, {
       withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      headers: { 'Content-Type': 'application/json' }
     });
     return response.data;
   } catch (error) {
-    return { error: "Kateqoriya gosterilmedi" };
+    return { error: "Kategori gösterilemedi" };
   }
-}
+};
 export const getCategoryForSubCategory = async (id) => {
   try {
     const response = await axios.get(`${API_URL}/all/subCategories/${id}`, {
       withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
     });
     return response.data;
   } catch (error) {
@@ -188,16 +175,12 @@ export const getCategoryForSubCategory = async (id) => {
   }
 };
 
-
-
-
 export const addTaskToFavorites = async (userId, taskId) => {
   const token = localStorage.getItem('token');
   if (!token) {
     console.error("Token bulunamadı, kullanıcı giriş yapmamış.");
     return;
   }
-
   try {
     const response = await axios.post(
       `${API_URL}/add/users/${userId}/favorites/${taskId}`,
@@ -215,11 +198,6 @@ export const addTaskToFavorites = async (userId, taskId) => {
     throw new Error("Favorilere eklenemedi.");
   }
 };
-
-
-
-
-
 export const getAllFavorites = async () => {
   try {
     const response = await axios.get(`${API_URL}/add/allFavorites`, {
@@ -242,9 +220,8 @@ export const getUserFavorites = async (userId) => {
   }
   try {
     const response = await axios.get(
-      `${API_URL}/add/favorite/${userId}`,
+      `${API_URL}/add/users/${userId}/favorites`,
       {
-
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -252,29 +229,36 @@ export const getUserFavorites = async (userId) => {
     );
     return response.data;
   } catch (error) {
-    console.error('Favoriler alınamadı:', error);
+    console.error('Favoriler alınamadı:', error || error.message || error.response);
     throw new Error("Favoriler alınamadı.");
   }
 };
+export const deleteFavoriteId = async (userId, taskId) => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    console.error("Token bulunamadı, kullanıcı giriş yapmamış.");
+    return;
+  }
 
-
-export const deleteFavoriteId = async (id) => {
   try {
-    if (!id) {
-      throw new Error("id eksik");
+    if (!taskId || !userId) {
+      throw new Error("userId veya taskId eksik");
     }
-    const response = await axios.delete(`${API_URL}/add/delete/${id}`, {
-      withCredentials: true,
+
+    const response = await axios.delete(`${API_URL}/add/delete/${userId}/${taskId}`, {
       headers: {
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${token}`,
       },
     });
+    console.log("Favori başarıyla silindi:", response.data);
     return response.data;
   } catch (error) {
-    console.error('Favori silinemedi:', error);
+    console.error("Favori silinemedi:", error);
     throw new Error("Favori silinemedi.");
   }
 };
+
+
 
 
 export const getUserById = async (userId) => {
@@ -290,49 +274,41 @@ export const getUserById = async (userId) => {
     return { error: "User gösterilemedi" };
   }
 };
-
-export const getTaskByCategory = async (categoryName) => {
+export const getTaskByCategory = async (categoryId) => {
   try {
-    const response = await axios.get(`${API_URL}/api/tasks/task/categories/${categoryName}`, {
+    const response = await axios.get(`${API_URL}/api/tasks/task/categories/${categoryId}`, {
       withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      headers: { 'Content-Type': 'application/json' }
     });
-    console.log("Butun Postlar", response.data);
     return response.data;
   } catch (error) {
     console.error("API Error:", error);
-    return { error: "Kategoriyanin masinlari gelmedi" };
+    return { error: "Kategorinin görevleri gelmedi" };
   }
 };
-export const getTaskBySubCategoryName = async (subCategoryName) => {
 
+
+export const getTaskBySubCategory = async (subCategoryName) => {
   try {
     const response = await axios.get(`${API_URL}/api/tasks/categories/sub/${subCategoryName}`, {
       withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      headers: { 'Content-Type': 'application/json' }
     });
-    console.log("API Response:", response.data);
     return response.data;
   } catch (error) {
-    console.error("API Error:", error.response || error.message);
-    return { error: "Görevler yüklenirken hata oluştu." };
+    console.error("API Error:", error);
+    return { error: "Alt kategorinin görevleri yüklenirken hata oluştu." };
   }
 };
-
 
 
 export const getTaskById = async (taskId) => {
   try {
     const response = await axios.get(`${API_URL}/api/tasks/details/${taskId}`, {
       withCredentials: true,
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
     });
+    console.log("Task alındı:", response.data);
     return response.data;
   } catch (error) {
     console.error("Task çekilemedi:", error);
@@ -353,4 +329,38 @@ export const getSearchTask = async (taskName) => {
     return { error: "Task gösterilemedi" };
   }
 }
+
+
+
+
+export const getUserTasks = async () => {
+  const token = localStorage.getItem('token');
+  const userId = localStorage.getItem('userId'); // User ID'yi de localStorage'dan alıyoruz
+  if (!token || !userId) {
+    console.error("Token veya User ID bulunamadı, kullanıcı giriş yapmamış.");
+    return;
+  }
+
+  try {
+    // Dinamik URL kullanımı: kullanıcı ID'siyle görevleri getiriyoruz
+    const response = await axios.get(`${API_URL}/api/tasks/get/${userId}`, {
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`  // Token'ı header'a ekliyoruz
+      }
+    });
+
+    console.log("Tasks API Cevabı:", response.data); // Burada gelen yanıtı kontrol edin
+    return response.data;
+  } catch (error) {
+    console.error("User task error", error);
+    return { error: "User task alınamadı" };
+  }
+};
+
+
+
+
+
 

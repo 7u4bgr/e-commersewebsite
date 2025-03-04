@@ -19,7 +19,7 @@
   border: none;
   outline: none;
   border-radius: 5px;
-  background-color: #db4444;
+  background-color: rgb(53, 139, 238);
 }
 .background .header h2 {
   font-family: "Poppins", sans-serif;
@@ -32,11 +32,15 @@
 .background .flashSales h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
+  color: rgb(53, 139, 238);
   font-size: 32px;
 }
 .background .price {
   margin-top: 40px;
   margin-bottom: 40px;
+}
+.background .price .border {
+  text-decoration: none;
 }
 .background .price .border .images {
   display: flex;

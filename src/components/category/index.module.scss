@@ -4,125 +4,30 @@
   box-sizing: border-box;
   color: black;
 }
+
 .control {
   display: flex;
 
   padding-top: 20px;
-  .categoryControl {
+
+  ul {
     display: flex;
-    gap: 100px;
-    .ul {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      li {
-        font-family: "Poppins", sans-serif;
-        font-style: 14px;
-      }
-    }
-    hr {
-      margin-top: 0;
-      padding-top: 0;
-      rotate: 0deg;
-    }
-  }
-  .categoryMobile {
-    display: none;
-  }
-  .photo {
-    img {
-      width: 100%;
-    }
-  }
-}
-.hrEnd{
-  hr{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 100%;
-  }
-}
-@media (max-width: 498px) {
-  .control {
-    display: flex;
-    flex-direction: column;
-    .categoryControl {
-      .ul {
-        display: none;
-      }
-    }
-    .categoryMobile {
-      padding-top: 10px;
-      display: block;
-      .buttonCategory {
-        background-color: rgb(180, 180, 180);
-        width: 100%;
-        padding: 10px;
-        border-radius: 10px;
-        border: none;
-        font-family: "Poppins", sans-serif;
-        outline: none;
-      }
-      .categoryUl {
-        padding-top: 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        button {
-          background-color: #DB4444;
-          border: none;
-          color: white;
-          border-radius: 5px;
-          padding: 10px;
-          font-family: "Poppins", sans-serif;
-        }
-        .womensDress {
-          padding-top: 10px;
-          display: flex;
-          flex-wrap: wrap;
-          
-          gap: 15px;
-          h2 {
-            padding-left: 10px;
-            width: 30%;
-            font-family: "Poppins", sans-serif;
-          }
-        }
-        .manDress{
-          padding-top: 10px;
-          display: flex;
-          flex-wrap: wrap;
-          
-          gap: 15px;
-          h2 {
-            padding-left: 10px;
-            width: 30%;
-            font-family: "Poppins", sans-serif;
-          }
-        }
-        .closeWomen{
-          width: 100%;
-          margin-top: 10px;
-          background-color: transparent;
-          border: 1px solid #DB4444;
-          color: black;
-          font-family: "Poppins", sans-serif;
-          text-align: center;
-          padding: 10px;
-          border-radius: 10px;
-        }
-        .closeMan{
-          width: 100%;
-          margin-top: 10px;
-          background-color: transparent;
-          border: 1px solid #DB4444;
-          color: black;
-          font-family: "Poppins", sans-serif;
-          text-align: center;
-          padding: 10px;
-          border-radius: 10px;
-        }
-      }
-    }
+    flex-wrap: wrap;
+   .controlAllCategory{
+
+     li {
+       width: 150px;
+       padding: 10px 20px;
+       a{
+        text-decoration: none;
+       }
+     }
+     .subCategoryUl{
+      margin-top: 10px;
+       display: flex;
+       flex-direction: column;
+     }
+   }
+
   }
 }

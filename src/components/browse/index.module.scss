@@ -16,7 +16,7 @@
       border: none;
       outline: none;
       border-radius: 5px;
-      background-color: #db4444;
+      background-color: rgb(53, 139, 238);
     }
     h2 {
       font-family: "Poppins", sans-serif;
@@ -29,6 +29,7 @@
     h2 {
       font-family: "Poppins", sans-serif;
       font-weight: 600;
+      color: rgb(53, 139, 238);
       font-size: 32px;
     }
   }
@@ -36,6 +37,7 @@
     margin-top: 40px;
     margin-bottom: 40px;
     .border {
+      text-decoration: none;
       .images {
         display: flex;
         flex-direction: column;

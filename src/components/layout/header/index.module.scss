@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .background {
 
   top: 0;
@@ -10,12 +11,14 @@
   background-color: white;
   z-index: 1000;
   padding: 27px 0;
+
   .headerControl {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 1440px;
     margin: auto;
+
     .leftSide {
       a {
         text-decoration: none;
@@ -26,10 +29,12 @@
         font-weight: 700;
       }
     }
+
     .middleSide {
       display: flex;
       align-items: center;
       gap: 30px;
+
       .active {
         position: relative;
         display: inline-block;
@@ -40,6 +45,7 @@
         font-size: 16px;
         font-family: "Poppins", sans-serif;
       }
+
       a {
         text-decoration: none;
         font-size: 16px;
@@ -47,15 +53,18 @@
         color: black;
       }
 
-  
+
     }
+
     .hamburger {
       display: none;
     }
+
     .rightSide {
       display: flex;
       align-items: center;
       gap: 30px;
+
       input {
         padding: 10px 40px;
         outline: none;
@@ -63,15 +72,18 @@
         background-color: #f5f5f5;
         outline: rgb(43, 147, 196);
       }
+
       .login {
         .userName {
           display: flex;
           align-items: center;
           gap: 5px;
+
           h2 {
             font-size: 16px;
             font-family: "Poppins", sans-serif;
           }
+
           a {
             text-decoration: none;
             color: black;
@@ -79,16 +91,18 @@
             font-family: "Poppins", sans-serif;
           }
         }
+
         .signUp {
           display: flex;
           align-items: center;
           gap: 30px;
+
           .active {
             position: relative;
             display: inline-block;
           }
-  
-    
+
+
           a {
             text-decoration: none;
             font-size: 16px;
@@ -97,36 +111,60 @@
           }
         }
       }
+
       input::placeholder {
         font-family: "Poppins", sans-serif;
         font-style: 12px;
       }
     }
   }
+
   .overlay {
     display: none;
   }
-  .searchResults{
-    margin-top: 50px;
-    max-width: 800px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
 
+  .searchResults {
+    margin-top: 20px;
+    max-width: 440px;
+    margin: auto;
+
+
+    .searchMaps {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      li {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        text-decoration: none;
+
+        a {
+          text-decoration: none;
+        }
+      }
+    }
   }
 }
+
 hr {
   margin-top: 90px;
 }
+
 @media (max-width: 498px) {
   .background {
     padding-top: 10px;
+
     .headerControl {
       width: 90%;
       margin: auto;
+
       .middleSide {
         display: none;
       }
+
       .hamburger {
         display: block;
       }
@@ -135,6 +173,7 @@ hr {
         display: none;
       }
     }
+
     .overlay {
       display: flex;
       width: 90%;
@@ -153,15 +192,18 @@ hr {
 
         border-bottom: 1px solid gray;
       }
+
       input {
         font-family: "Poppins", sans-serif;
         padding: 20px 20px;
       }
+
       input::placeholder {
         font-family: "Poppins", sans-serif;
       }
     }
   }
+
   hr {
     margin-top: 40px;
     margin-bottom: 10px;

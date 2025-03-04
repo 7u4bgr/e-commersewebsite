@@ -1,3 +1,4 @@
+
 import About from "./pages/about";
 import AccountEdit from "./pages/accountedit";
 import AdminPage from "./pages/adminpage";
@@ -12,6 +13,7 @@ import NotFound from "./pages/notFound";
 import SignUp from "./pages/signup";
 import StorePage from "./pages/store";
 import SubCategoryProducts from "./pages/subcategoryproducts";
+import UserTasks from "./pages/usertasks";
 const routeItem = (id, title, path, component) => {
   return {
     id,
@@ -28,7 +30,7 @@ const routes = {
   contact: routeItem(4, "contact", "/contact", Contact),
   loginPage: routeItem(5, "loginPage", "/login", LoginPage),
   signUp: routeItem(6, "signUp", "/signup", SignUp),
-  favorites: routeItem(7, "favorites", "/favorites", Favorites),
+  favorites: routeItem(7, "favorites", "/favorites/:userId", Favorites),
   accountedit: routeItem(8, "accountedit", "/account/edit", AccountEdit),
   storepage: routeItem(9, "storepage", "/buywishlist", StorePage),
   createpost: routeItem(10, "createpost", "/createpost", FileUpload),
@@ -36,8 +38,7 @@ const routes = {
   detailsproduct: routeItem(12, "detailsproduct", "/product-details/:taskId", DetailsProduct),
   categoryproducts: routeItem(13, "categoryproducts", "/category-details/:categoryName", CategoryProducts),
   subcategoryproducts: routeItem(14, "subcategoryproducts", "/subcategory-details/:subCategoryName", SubCategoryProducts),
-
-
+  usertasks:routeItem(15, "usertasks", "/usertasks/:userId", UserTasks),
 };
 
 const routeArr = Object.values(routes);

@@ -1,82 +1,59 @@
-// index.module.scss
-
-$primary-color: #4CAF50;
-$secondary-color: #f4f4f9;
-$text-color: #333;
-$subtext-color: #777;
-$hover-effect: 0.3s ease-in-out;
-$box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-$border-radius: 8px;
-
 .background {
-  padding: 20px;
-  background-color: $secondary-color;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-}
-
-.header {
-  margin-bottom: 20px;
-  text-align: center;
-
-  h2 {
-    font-size: 24px;
-    color: $text-color;
-    margin-bottom: 10px;
-  }
-}
-
-.control {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: $border-radius;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform $hover-effect;
+  padding: 2rem;
+  background-color: #f8f9fa; // Açık gri arka plan
+  min-height: 100vh;
+
+  h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.header {
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 
   h3 {
-    font-size: 18px;
-    color: $text-color;
-    margin-bottom: 8px;
+    font-size: 1.4rem;
+    color: #222;
+    margin-bottom: 0.5rem;
   }
 
   p {
-    font-size: 14px;
-    color: $subtext-color;
-    margin-bottom: 8px;
-  }
+    font-size: 1rem;
+    color: #555;
+    margin: 0.3rem 0;
 
-  img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    border-radius: $border-radius;
-    margin-top: 10px;
-    transition: transform $hover-effect;
-
-    &:hover {
-      transform: scale(1.05);
+    &:last-child {
+      font-weight: bold;
+      color: #007bff;
     }
   }
 }
 
+// Mobil uyumlu tasarım
 @media (max-width: 768px) {
-  .header h2 {
-    font-size: 20px;
+  .background {
+    padding: 1rem;
   }
 
-  .control {
-    width: 100%;
-  }
-
-  .control img {
-    max-width: 100%;
+  .header {
+    width: 90%;
+    padding: 1rem;
   }
 }

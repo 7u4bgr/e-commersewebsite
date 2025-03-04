@@ -1,64 +1,52 @@
 .background {
-  padding: 20px;
-  background-color: #f4f4f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.header {
-  margin-bottom: 20px;
-  text-align: center;
-}
-.header h2 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.control {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.3s ease-in-out;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  min-height: 100vh;
 }
-.control:hover {
-  transform: scale(1.05);
-}
-.control h3 {
-  font-size: 18px;
+.background h2 {
+  font-size: 2rem;
   color: #333;
-  margin-bottom: 8px;
+  margin-bottom: 1.5rem;
 }
-.control p {
-  font-size: 14px;
-  color: #777;
-  margin-bottom: 8px;
-}
-.control img {
+
+.header {
   width: 100%;
-  max-width: 300px;
-  height: auto;
-  border-radius: 8px;
-  margin-top: 10px;
-  transition: transform 0.3s ease-in-out;
+  max-width: 600px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.control img:hover {
-  transform: scale(1.05);
+.header:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.header h3 {
+  font-size: 1.4rem;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+.header p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0.3rem 0;
+}
+.header p:last-child {
+  font-weight: bold;
+  color: #007bff;
 }
 
 @media (max-width: 768px) {
-  .header h2 {
-    font-size: 20px;
+  .background {
+    padding: 1rem;
   }
-  .control {
-    width: 100%;
-  }
-  .control img {
-    max-width: 100%;
+  .header {
+    width: 90%;
+    padding: 1rem;
   }
 }/*# sourceMappingURL=index.module.css.map */

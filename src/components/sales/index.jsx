@@ -42,6 +42,7 @@ const SalesToday = () => {
       }
     };
 
+
     fetchUserData(); // Kullanıcı verisini al
     fetchData(); // Görev verisini al
   }, []);
@@ -61,7 +62,7 @@ const SalesToday = () => {
       alert("Kullanıcı giriş yapmamış. Lütfen giriş yapın.");
     }
   };
-  
+
 
   if (loading) return <div className={styles.loader}>Veriler yükleniyor...</div>;
   if (error) return <div className={styles.error}>{error}</div>;
@@ -70,22 +71,22 @@ const SalesToday = () => {
     <Wrapper>
       <div className={styles.background}>
         <div className={styles.header}>
-          <h2>Bugünün Satışları</h2>
+          <h2>All Sales</h2>
           {userId ? (
             <button>
               <Link to="/createpost" className={styles.createPostButton}>
-                Yeni Gönderi Oluştur
+                Create New Post
               </Link>
             </button>
           ) : (
             <button onClick={() => alert("Lütfen giriş yapın.")} className={styles.createPostButton}>
-              Yeni Gönderi Oluştur
+              Create New Post
             </button>
           )}
         </div>
         <div className={styles.flashHeader}>
           <div className={styles.flashSales}>
-            <h2>Flash Satışlar</h2>
+            <h2>Sales</h2>
           </div>
         </div>
         <div className={styles.controlBorder}>
@@ -97,13 +98,16 @@ const SalesToday = () => {
                     <img src={item.photoPath} alt={item.title} loading="lazy" />
                   </SwiperSlide>
                 </Swiper>
-                <Link to={`/product-details/${item.id}`} className={styles.eyeIcons}>
+                <Link to={`/product-details/${item.id || "no-id"}`} className={styles.eyeIcons}>
                   <EyeIcon />
                 </Link>
+
+
               </div>
               <div className={styles.itemName}>
                 <h2>{item.title}</h2>
-                <p>{item.categoryName}</p>
+                <p>{item.categoryName || 'Kategori yok'}</p>
+                <p>{item.subCategoryName || 'Alt kategori yok'}</p>
                 <p>{item.description}</p>
                 <button>{item.price}$</button>
                 {userId ? (
@@ -112,6 +116,7 @@ const SalesToday = () => {
                   <button onClick={() => alert("Lütfen giriş yapın.")}>Favorilere Ekle</button>
                 )}
               </div>
+
             </div>
           ))}
         </div>

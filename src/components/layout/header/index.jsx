@@ -13,12 +13,12 @@ const Header = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
- 
+
   useEffect(() => {
     const fetchUserData = async () => {
       const token = localStorage.getItem("token");
       if (!token) return;
-  
+
       try {
         const response = await getUserInfo(token);
         if (response) {
@@ -30,12 +30,12 @@ const Header = () => {
         console.error("Kullanıcı bilgileri alınamadı", error);
       }
     };
-  
+
     fetchUserData();
   }, []);
-  
 
-  
+
+
   useEffect(() => {
     if (searchTerm.trim() === "") {
       setSearchResults([]);
@@ -60,7 +60,7 @@ const Header = () => {
     };
 
     fetchSearchResults();
-  }, [searchTerm]); 
+  }, [searchTerm]);
 
 
   const handleLogOut = () => {
@@ -92,15 +92,21 @@ const Header = () => {
           />
           {loading && <div className={styles.loader}>Yükleniyor...</div>} {/* Yükleniyor animasyonu */}
           {error && <div className={styles.error}>{error}</div>} {/* Hata mesajı */}
-         
-          <Link to={"/favorites"}>
+
+          <Link to={`/favorites/${user?.id}`}>
             <FavoriIcon />
           </Link>
+          {user ? (
+          <Link to={`/usertasks/${user?.id}`}>
+            Postlarim
+          </Link>
+          ): null}
+          
           <div className={styles.login}>
             {user ? (
               <div className={styles.userName}>
                 <span>Welcome, {user.username}!</span>
-              
+
                 <h2 onClick={handleLogOut}>
                   <ExitIcon />
                 </h2>
@@ -109,27 +115,31 @@ const Header = () => {
               <div className={styles.signUp}>
                 <Link to={"/login"}>Login</Link>
                 <Link to={"/signup"}>Sign Up</Link>
-             
+
               </div>
             )}
           </div>
-    
+
         </div>
       </div>
       <ul className={styles.searchResults}>
-            {searchResults.length === 0 ? (
-              <li>No results found</li> // Eğer sonuç yoksa
-            ) : (
-              searchResults.map((task) => (
-                <li key={task.id}>
-                  <Link to={`/product-details/${task.id}`}>
-                    <h3>{task.title}</h3>
-                    <p>{task.description}</p>
-                  </Link>
-                </li>
-              ))
-            )}
-          </ul>
+        {searchResults.length === 0 ? (
+          null// Eğer sonuç yoksa
+        ) : 
+          <div className={styles.searchMaps}>
+
+         
+          {searchResults.map((task) => (
+            <li key={task.id}>
+              <Link to={`/product-details/${task.id}`}>
+                <h3>{task.title}</h3>
+                <p>{task.description}</p>
+              </Link>
+            </li>
+          ))}
+          </div>
+        }
+      </ul>
     </div>
   );
 };

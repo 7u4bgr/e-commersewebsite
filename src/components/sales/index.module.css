@@ -10,16 +10,20 @@
 }
 .background .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
 }
 .background .header button {
-  width: 15px;
+  width: 200px;
   height: 30px;
   border: none;
   outline: none;
   border-radius: 5px;
-  background-color: #db4444;
+  color: white;
+  font-weight: 700;
+  background-color: rgb(53, 139, 238);
+  cursor: pointer;
 }
 .background .header h2 {
   font-family: "Poppins", sans-serif;

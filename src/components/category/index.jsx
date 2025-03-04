@@ -51,20 +51,19 @@ const Category = () => {
 
   return (
     <Wrapper>
-        <h2>Butun Kategoriyalar</h2>
+
       <div className={styles.control}>
         <ul className={styles.ul}>
           {categories.map((category) => (
-            <li key={category.id}>
-           
-              <div
-                onClick={() => handleCategoryClick(category.id)}
-                style={{ cursor: "pointer", fontWeight: "bold" }}
-              >
-                {category.categoryName}
-              </div>
-
-              {/* Alt kategoriler */}
+           <div className={styles.controlAllCategory}>
+              <li key={category.id}>
+                <div
+                  onClick={() => handleCategoryClick(category.id)}
+                  style={{ cursor: "pointer", fontWeight: "bold" }}
+                >
+                  {category.categoryName}
+                </div>
+              </li>
               {selectedCategoryId === category.id && subCategories[category.id] && (
                 <ul className={styles.subCategoryUl}>
                   {subCategories[category.id].map((sub) => (
@@ -76,7 +75,8 @@ const Category = () => {
                   ))}
                 </ul>
               )}
-            </li>
+           </div>
+
           ))}
         </ul>
 

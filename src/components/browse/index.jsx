@@ -39,10 +39,10 @@ const BrowseCategory = () => {
       <div className={styles.background}>
         <div className={styles.header}>
           <button></button>
-          <h2>Kategoriler</h2>
+          <h2>Categories</h2>
         </div>
         <div className={styles.flashSales}>
-          <h2>Kategoriye Göz At</h2>
+          <h2>Look All Categories</h2>
         </div>
         <Swiper
           modules={[Autoplay, Navigation]}

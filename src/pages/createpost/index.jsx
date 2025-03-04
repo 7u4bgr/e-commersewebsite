@@ -17,32 +17,36 @@ const FileUpload = () => {
       alert("Lütfen tüm alanları doldurun!");
       return;
     }
-  
+
     const token = localStorage.getItem("token");
     if (!token) {
       alert("Token bulunamadı! Lütfen tekrar giriş yapın.");
       return;
     }
-  
+
     try {
       const userInfo = await getUserInfo(token);
       if (!userInfo || !userInfo.id) {
         alert("Kullanıcı bilgileri alınamadı!");
         return;
       }
-  
+
       console.log("Doğru User ID:", userInfo.id);
-  
+
       const taskData = {
         title,
         description,
         price,
-        categoryName: categories.find(c => c.id === selectedCategoryId)?.categoryName || "",
-        subCategoryName: subCategories.find(sc => sc.id === selectedSubCategoryId)?.subCategoryName || "",
+        category: {
+          id: selectedCategoryId,
+        },
+        subCategory: {
+          id: selectedSubCategoryId,
+        },
         userId: userInfo.id,
       };
       
-  
+
       const result = await createTask(taskData);
       if (result?.error) {
         alert("Görev oluşturulurken bir hata oluştu.");
@@ -59,9 +63,6 @@ const FileUpload = () => {
       alert("Görev yüklenirken bir hata oluştu.");
     }
   };
-  
-  
-  
 
   useEffect(() => {
     const fetchCategories = async () => {

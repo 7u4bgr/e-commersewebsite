@@ -1,0 +1,64 @@
+// Renk değişkenleri
+$primary-color: #007bff;
+$error-color: #dc3545;
+$background-color: #f8f9fa;
+$card-bg: #fff;
+$text-color: #333;
+$shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  background-color: $background-color;
+
+  .card {
+    background: $card-bg;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: $shadow;
+    transition: transform 0.3s ease-in-out;
+    width: 300px;
+    border-left: 5px solid $primary-color;
+
+    h3 {
+      color: $text-color;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: darken($text-color, 20%);
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+// Yükleme, hata ve boş içerik mesajları
+.loading,
+.error,
+.no-tasks {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.loading {
+  color: $primary-color;
+}
+
+.error {
+  color: $error-color;
+}
+
+.no-tasks {
+  color: darken($background-color, 40%);
+}
